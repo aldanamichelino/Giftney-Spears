@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import britney from './britney.svg';
 import './App.css';
+import './index.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="App flex flex-col justify-between">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <main className="App-main">
+        <div className="flex flex-col items-center">
+          <img src={britney} className="App-logo" alt="britney-logo" />
+          <h1 className="title">Giftney Spears</h1>
+          <h2 className="subtitle">Coming soon!</h2>
+        </div>
+      </main>
+      <footer className="App-footer">
+        <div className="flex flex-col">
+          <h3>#FreeBritney</h3>
+          <p>Desarrollo de Aldana Michelino</p>
+        </div>
+      </footer>
     </div>
   );
 }
