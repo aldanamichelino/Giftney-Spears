@@ -1,25 +1,21 @@
-import britney from './britney.svg';
-import './App.css';
+import './sass/App.scss';
 import './index.css';
+import { NavBar } from './components/NavBar/NavBar';
+import { Footer } from './components/Footer/Footer';
+import { ItemListContainer } from './container/ItemListContainer';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, faShoppingCart);
+
 
 const App = () => {
   return (
     <div className="App flex flex-col justify-between">
-      <header className="App-header">
-      </header>
-      <main className="App-main">
-        <div className="flex flex-col items-center">
-          <img src={britney} className="App-logo" alt="britney-logo" />
-          <h1 className="title">Giftney Spears</h1>
-          <h2 className="subtitle">Coming soon!</h2>
-        </div>
-      </main>
-      <footer className="App-footer">
-        <div className="flex flex-col">
-          <h3>#FreeBritney</h3>
-          <p>Desarrollo de Aldana Michelino</p>
-        </div>
-      </footer>
+      <NavBar/>
+      <ItemListContainer greeting="Regalos para adolescentes de 25+ años!"/>
+      <Footer/>
     </div>
   );
 }

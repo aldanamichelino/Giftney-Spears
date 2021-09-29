@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * { 
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@
 
 @font-face{
   font-family: 'oops';
-  src: local('oops'), url(./fonts/oops/oops.ttf) format('truetype');
+  src: local('oops'), url(./assets/fonts/oops/oops.ttf) format('truetype');
 }
 
 body {
