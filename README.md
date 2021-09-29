@@ -1,6 +1,6 @@
-## Giftney Spears
+# Giftney Spears
 
-# Instrucciones de instalación
+## Instrucciones de instalación
 
 Para levantar el servidor de react, corré *npm start*
 
