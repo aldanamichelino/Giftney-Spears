@@ -2,13 +2,8 @@
   font-family: "Inconsolata", monospace;
 }
 
-svg {
-  color: #ED26CC;
-  margin-bottom: 20px;
-}
-
 .header {
-  box-shadow: 0 0 4px 0 #bdbdbd;
+  box-shadow: 0 0 8px 0 #bdbdbd;
   padding: 10px 30px;
 }
 .header__container {
@@ -27,6 +22,7 @@ svg {
 .header__nav p {
   margin: 0 30px;
   color: #474747;
+  font-weight: 500;
   padding-bottom: 10px;
   cursor: pointer;
   position: relative;
@@ -38,14 +34,26 @@ svg {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(to right, #b47dcd, #e878a2, #eb85ab);
+  background: linear-gradient(to right, #69FFCA, #ED26CC);
   z-index: 1;
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: right;
   transition: transform 0.5s ease-in-out;
 }
 .header__nav p:hover:before {
+  transform-origin: left;
   transform: scaleX(1);
+  transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
+}
+.header svg {
+  margin-bottom: 20px;
+}
+
+.App-loading-flower img {
+  height: 60px;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
 }
 
 .App-footer {
@@ -53,6 +61,42 @@ svg {
   color: #fff;
   padding: 10px;
   text-align: end;
+}
+
+.list__item {
+  background-color: #e9fff7;
+}
+.list__item img {
+  height: 350px;
+}
+.list__item__description {
+  margin: 20px 0 40px 0;
+}
+.list__item__price {
+  text-align: end;
+  bottom: 20px;
+  right: 20px;
+  color: #ED26CC;
+  font-weight: 700;
+}
+
+.item__list .item__list__subtitle {
+  margin: 20px 0;
+}
+.item__list .list {
+  background-color: #eeeeee, 5%;
+}
+
+svg {
+  color: #ED26CC;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+svg {
+  color: #ED26CC;
+  margin: 0;
+  cursor: pointer;
 }
 
 .App {

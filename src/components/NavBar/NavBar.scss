@@ -1,8 +1,6 @@
-@import '../../components/CartWidget/CartWidget.scss';
-
 .header{
 
-    box-shadow: 0 0 4px 0 $soft-gray;
+    box-shadow: 0 0 8px 0 $soft-gray;
     padding: 10px 30px;
 
     &__container{
@@ -53,5 +51,9 @@
                 }
             }
         }
+    }
+
+    svg{
+        margin-bottom: 20px;
     }
 }

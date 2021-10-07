@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const CartWidget = () => {
+export const FavoriteWidget = () => {
     return (
         <>
-            <FontAwesomeIcon icon="shopping-cart" className="flex justify-self-end self-end"/>
+            <FontAwesomeIcon icon="heart" className=""/>
         </>
     )
 }
