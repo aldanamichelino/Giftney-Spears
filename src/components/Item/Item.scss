@@ -1,0 +1,40 @@
+.list__item{
+    background-color: lighten($sweet-green, 25%);
+
+    img{
+        height: 350px;
+    }
+
+
+    &__info{
+
+        &__name{
+            position: relative;
+        }
+
+        &__pill{
+            position: absolute;
+            right: 0;
+            color: white;
+            background-color: $baby-pink;
+            padding: 0 5px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        &__description{
+            margin: 20px 0 40px 0;
+    
+        }
+    
+        &__price{
+            text-align: end;
+            bottom: 20px;
+            right: 20px;
+            color: $pink;
+            font-weight: 700;
+        }
+    }
+    
+
+}

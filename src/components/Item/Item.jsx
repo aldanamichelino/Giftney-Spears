@@ -1,9 +1,9 @@
 import React from 'react';
-import { CartWidget } from '../../components/CartWidget/CartWidget';
-import { FavoriteWidget } from '../../components/FavoriteWidget/FavoriteWidget';
+import { CartWidget } from '../CartWidget/CartWidget';
+import { FavoriteWidget } from '../FavoriteWidget/FavoriteWidget';
 
 
-export const Item = ({ id, name, price, img, description, imgDescription }) => {
+export const Item = ({ id, name, price, img, description, imgDescription, category }) => {
     return (
         <div className="list__item relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-4 my-3 cursor-pointer">
             <div className="overflow-x-hidden rounded-2xl relative">
@@ -17,9 +17,9 @@ export const Item = ({ id, name, price, img, description, imgDescription }) => {
             </div>
             <div className="list__item__info mt-4 px-2 p mb-2 flex justify-between">
                 <div>
-                    <p className="text-lg font-semibold text-gray-900 mb-0 inconsolata">{ name }</p>
-                    <p className="list__item__description text-justify text-gray-900 mb-0">{ description }</p>
-                    <p className="list__item__price absolute text-md text-gray-800 mt-0">$ { price }</p>
+                    <p className="list__item__info__name text-lg font-semibold text-gray-900 mb-0 inconsolata">{ name } <span className="list__item__info__pill">{ category }</span></p>
+                    <p className="list__item__info__description text-justify text-gray-900 mb-0">{ description }</p>
+                    <p className="list__item__info__price absolute text-md text-gray-800 mt-0">$ { price }</p>
                 </div>
             </div>
         </div>

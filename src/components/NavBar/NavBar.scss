@@ -21,7 +21,7 @@
 
     &__nav{
         
-        p{
+        &__link{
             margin: 0 30px;
             color: $strong-gray;
             font-weight: 500;
@@ -49,6 +49,10 @@
                     transform: scaleX(1);
                     transition-timing-function: cubic-bezier(0.2, 1, 0.82, 0.94);
                 }
+            }
+
+            &.activeLink{
+                //agregar estilos
             }
         }
     }
