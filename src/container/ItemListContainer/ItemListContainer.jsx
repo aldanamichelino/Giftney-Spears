@@ -11,14 +11,19 @@ export const ItemListContainer = () => {
 
        const {categoryId} = useParams();
 
-       console.log(categoryId);
-
        useEffect(() => {
            setLoading(true);
 
            getProducts()
             .then((res) => {
-               categoryId ? setItems(res.filter(prod => prod.category === categoryId)) : setItems(res);
+                if(categoryId){
+                    // if(categoryId === 'freebritney'){
+                    //     setItems(res.filter(prod => prod.freeBritney === 1));
+                    // }
+                    setItems(res.filter(prod => prod.category === categoryId))
+                } else {
+                    setItems(res);
+                };
              })
             .catch((err) => console.log(err))
             .finally(() => {

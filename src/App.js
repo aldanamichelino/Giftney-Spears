@@ -5,11 +5,12 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { NavBar } from './components/NavBar/NavBar';
 import { Footer } from './components/Footer/Footer';
 import { ItemListContainer } from './container/ItemListContainer/ItemListContainer';
+import { ItemDetailContainer } from './container/ItemDetailContainer/ItemDetailContainer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faShoppingCart, faEye} from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faShoppingCart, faHeart);
+library.add(fab, faShoppingCart, faHeart, faEye);
 
 
 const App = () => {
@@ -27,13 +28,13 @@ const App = () => {
             <ItemListContainer/>
           </Route>
           <Route exact path="/item/:id">
-            <h2>Acá va el ItemDetailContainer</h2>
+            <ItemDetailContainer/>
           </Route>
           <Route exact path="/carrito">
             <h1>Carrito</h1>
           </Route>
           <Route path="*">
-            <h2>No existe</h2>
+            <Redirect to="/"/>
           </Route>
         </Switch>
 

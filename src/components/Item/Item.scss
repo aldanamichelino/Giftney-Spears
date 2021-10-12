@@ -1,5 +1,6 @@
 .list__item{
     background-color: lighten($sweet-green, 25%);
+    position: relative;
 
     img{
         height: 350px;
@@ -8,16 +9,13 @@
 
     &__info{
 
-        &__name{
-            position: relative;
-        }
-
         &__pill{
             position: absolute;
-            right: 0;
+            left: 20px;
+            bottom: 20px;
             color: white;
             background-color: $baby-pink;
-            padding: 0 5px;
+            padding: 5px;
             border-radius: 5px;
             font-size: 12px;
         }
