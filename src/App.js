@@ -8,9 +8,9 @@ import { ItemListContainer } from './container/ItemListContainer/ItemListContain
 import { ItemDetailContainer } from './container/ItemDetailContainer/ItemDetailContainer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faShoppingCart, faEye} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faShoppingCart, faEye, faBackward, faHome} from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faShoppingCart, faHeart, faEye);
+library.add(fab, faShoppingCart, faHeart, faEye, faBackward, faHome);
 
 
 const App = () => {

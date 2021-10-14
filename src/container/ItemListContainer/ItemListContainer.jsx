@@ -17,10 +17,12 @@ export const ItemListContainer = () => {
            getProducts()
             .then((res) => {
                 if(categoryId){
-                    // if(categoryId === 'freebritney'){
-                    //     setItems(res.filter(prod => prod.freeBritney === 1));
-                    // }
-                    setItems(res.filter(prod => prod.category === categoryId))
+                    if(categoryId === 'freebritney'){
+                        console.log('freeBritney');
+                        setItems(res.filter(prod => prod.freeBritney === 1));
+                    } else {
+                        setItems(res.filter(prod => prod.category === categoryId));
+                    }
                 } else {
                     setItems(res);
                 };

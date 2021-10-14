@@ -9,15 +9,12 @@
 
     &__info{
 
-        &__pill{
-            position: absolute;
-            left: 20px;
-            bottom: 20px;
-            color: white;
-            background-color: $baby-pink;
-            padding: 5px;
-            border-radius: 5px;
+        &__pill, &__freeBritney{
+            color: $baby-pink;
+            border: $baby-pink 1px solid;
+            padding: 4px;
             font-size: 12px;
+            margin-right: 15px;
         }
 
         &__description{
@@ -27,7 +24,7 @@
     
         &__price{
             text-align: end;
-            bottom: 20px;
+            bottom: 16px;
             right: 20px;
             color: $pink;
             font-weight: 700;

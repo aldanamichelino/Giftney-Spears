@@ -1,0 +1,17 @@
+.item__detail__card{
+    background: $soft-orange;
+
+    &__img{
+        border: $black solid 3px;
+        padding: 10px;
+    }
+
+    &__buttonBack{
+        background: $pink;
+        color: $white;
+    }
+
+    &__amount{
+        background: $white;
+    }
+}
