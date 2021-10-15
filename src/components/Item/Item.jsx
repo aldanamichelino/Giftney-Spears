@@ -1,16 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ViewDetailsWidget } from '../ViewDetailsWidget/ViewDetailsWidget';
 import { FavoriteWidget } from '../FavoriteWidget/FavoriteWidget';
+import { CartWidget } from '../CartWidget/CartWidget';
 
 
-export const Item = ({ id, name, price, img, description, imgDescription, category, freeBritney }) => {
+export const Item = ({ id, name, price, img, description, imgDescription, category, freeBritney}) => {
     return (
-        <div className="list__item relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-4 my-3 relative">
+        <Link to={`/item/${id}`} className="list__item relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-4 my-3 relative">
             <div className="overflow-x-hidden rounded-2xl relative">
                 <img className="w-full rounded-2xl object-cover" src={img} alt={imgDescription}/>
-                <Link to={`/item/${id}`} className="widget__container absolute right-2 top-2 bg-white rounded-full p-2 cursor-pointer group">
-                    <ViewDetailsWidget/>
+                <Link to={'/carrito'} className="widget__container absolute right-2 top-2 rounded-full p-2 cursor-pointer group">
+                    <CartWidget/>
                 </Link>
                 <p className="widget__container absolute right-2 bottom-2 bg-white rounded-full p-2 cursor-pointer group">
                     <FavoriteWidget/>
@@ -30,6 +30,6 @@ export const Item = ({ id, name, price, img, description, imgDescription, catego
                 { freeBritney === 1 ? <Link to="/productos/freebritney" className="list__item__info__freeBritney">FreeBritney</Link> : '' }
             </div>
             
-        </div>
+        </Link>
     )
 }

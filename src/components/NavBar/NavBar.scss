@@ -57,6 +57,12 @@
         }
     }
 
+    &__amount__count{
+        color: white;
+        background: $black;
+        font-size: 11px;
+    }
+
     svg{
         margin-bottom: 20px;
     }

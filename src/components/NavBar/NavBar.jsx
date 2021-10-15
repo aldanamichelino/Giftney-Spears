@@ -22,7 +22,9 @@ export const NavBar = () => {
                         <NavLink className="header__nav__link" activeClassName={'activeLink'} exact to="/productos/freebritney">Free Britney</NavLink>
                     </div>
 
-                    <Link to="/carrito"><CartWidget/></Link>
+                    <Link className="flex relative" to="/carrito"><CartWidget/>
+                        <span className="header__amount__count absolute absolute left-3 -top-3 rounded-full w-3 h-3 p-0 m-0 leading-tight text-center">1</span>
+                    </Link>
                 </nav>
             </div>
         </header>  

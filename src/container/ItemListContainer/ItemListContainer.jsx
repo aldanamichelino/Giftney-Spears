@@ -18,7 +18,6 @@ export const ItemListContainer = () => {
             .then((res) => {
                 if(categoryId){
                     if(categoryId === 'freebritney'){
-                        console.log('freeBritney');
                         setItems(res.filter(prod => prod.freeBritney === 1));
                     } else {
                         setItems(res.filter(prod => prod.category === categoryId));

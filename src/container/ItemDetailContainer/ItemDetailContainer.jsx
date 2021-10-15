@@ -8,6 +8,7 @@ export const ItemDetailContainer = () => {
 
     const [item, setItem] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const { id } = useParams();
 
@@ -18,7 +19,7 @@ export const ItemDetailContainer = () => {
             .then((res) => {
                 setItem(res)
             })
-            .catch(err => console.log(err))
+            .catch((err) => setError(err))
             .finally(() => {
                 setLoading(false);
         });
@@ -30,7 +31,7 @@ export const ItemDetailContainer = () => {
             {
                 loading ?
                 <Spinner/> :
-                <ItemDetail {...item}/>
+                <ItemDetail {...item} error={error}/>
             }
         </section>
     )

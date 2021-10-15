@@ -10,6 +10,7 @@
 @import '../components/BackwardWidget/BackwardWidget.scss';
 @import '../components/HomeWidget/HomeWidget.scss';
 @import '../components/ItemDetail/ItemDetail.scss';
+@import '../components/Cart/Cart.scss';
 @import '../container/ItemListContainer/ItemListContainer.scss';
 
 
@@ -17,6 +18,10 @@
 .App {
     text-align: center;
     min-height: 100vh;
+}
+
+.error{
+    color: $pink;
 }
 
   

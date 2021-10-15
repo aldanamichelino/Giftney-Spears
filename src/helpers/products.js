@@ -12,8 +12,9 @@ export const getProducts = () => {
 export const getProduct = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(stock.find( prod => prod.id === Number(id)));
-            // reject(new Error('Oops! Ese id de producto no existe.'))
+            stock.find( prod => prod.id === Number(id)) ?
+            resolve(stock.find( prod => prod.id === Number(id))) :
+            reject('Oops! Este id de producto no existe. Si querés, contactate con nosotros.');
         }, 2000);
     });
 }

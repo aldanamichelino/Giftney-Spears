@@ -6,6 +6,7 @@ import { NavBar } from './components/NavBar/NavBar';
 import { Footer } from './components/Footer/Footer';
 import { ItemListContainer } from './container/ItemListContainer/ItemListContainer';
 import { ItemDetailContainer } from './container/ItemDetailContainer/ItemDetailContainer';
+import { Cart } from './components/Cart/Cart';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faShoppingCart, faEye, faBackward, faHome} from '@fortawesome/free-solid-svg-icons';
@@ -31,7 +32,7 @@ const App = () => {
             <ItemDetailContainer/>
           </Route>
           <Route exact path="/carrito">
-            <h1>Carrito</h1>
+            <Cart/>
           </Route>
           <Route path="*">
             <Redirect to="/"/>

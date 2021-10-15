@@ -1,0 +1,22 @@
+.cart__background{
+    background: lighten($sweet-green, 25%);
+}
+
+.cart__arrow__back{
+    color: $pink;
+
+    &__text{
+        color: $pink;
+    }
+}
+
+.cart__buy__button{
+    border: 2px solid $pink;
+    color: $pink;
+
+    &:hover{
+        background: $strong-gray;
+        border: 2px solid $strong-gray;
+        color: $white;
+    }
+}

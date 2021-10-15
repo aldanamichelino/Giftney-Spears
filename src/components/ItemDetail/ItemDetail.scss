@@ -1,5 +1,6 @@
 .item__detail__card{
     background: $soft-orange;
+    min-height: 520px;
 
     &__img{
         border: $black solid 3px;
@@ -13,5 +14,17 @@
 
     &__amount{
         background: $white;
+    }
+
+    &__add{
+        border: 2px solid $pink;
+        color: $pink;
+        padding: 5px;
+
+        &:hover{
+            background: $strong-gray;
+            border: 2px solid $strong-gray;
+            color: $white;
+        }
     }
 }

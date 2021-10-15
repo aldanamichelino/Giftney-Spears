@@ -4,9 +4,8 @@ export const Footer = () => {
     return (
         <>
             <footer className="App-footer">
-                <div className="flex flex-col">
-                <h3>#FreeBritney</h3>
-                <p>Desarrollo de Aldana Michelino</p>
+                <div className="flex flex-col items-center">
+                <p>Giftney Spears es una marca registrada de AM Productos. Contactanos a giftney-spears@amproductos.com.ar.</p>
                 </div>
             </footer>
         </>
