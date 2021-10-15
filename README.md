@@ -2,6 +2,8 @@
 
 ## Instrucciones de instalación
 
+Para instalar la aplicación, corré *npm install*
+
 Para levantar el servidor de react, corré *npm start*
 
 Para compilar los archivos de Sass, corré *npm run sass*
