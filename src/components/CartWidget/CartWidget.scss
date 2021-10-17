@@ -1,5 +1,14 @@
-.shopping-cart {
+.cart {
     color: $pink;
     margin-bottom: 20px;
     cursor: pointer;
+    width: 28px !important;
+    height: 28px !important;
+
+    &__amount__count{
+        color: white;
+        background: $black;
+        font-size: 13px;
+        font-weight: 700;
+    }
 }

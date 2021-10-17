@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useState, useContext } from 'react';
 import { useHistory } from 'react-router';
-import { Link } from 'react-router-dom';
+import { ItemCounter } from '../../containers/ItemCounter/ItemCounter';
+import { CartContext } from '../../contexts/CartContext';
 
 
-export const ItemDetail = ({ id, name, price, img, description, imgDescription, category, error }) => {
+export const ItemDetail = ({ id, name, price, img, description, imgDescription, category, stock, error }) => {
 
     const {goBack, push} = useHistory();
+
+    const { addItemToCart } = useContext(CartContext);
+
+    const [amount, setAmount] = useState(0);
+
+    const handleAdd = () => {
+        const newItem = {
+            id,
+            name,
+            price,
+            category,
+            amount
+        }
+
+        addItemToCart(newItem);
+    }
 
     return (
             <>
@@ -38,24 +55,11 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
                                         </div>
                                     </div>
                                     
-                                    <div className="flex justify-center">
-                                        <div className="relative inline-flex items-end mr-8">
-                                            <svg className="w-2 h-2 absolute top-18 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 232"><path d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z" fill="#648299" fillRule="nonzero"/></svg>
-                                            <select className="item__detail__card__amount border h-10 pl-5 pr-5 focus:outline-none appearance-none">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                            </select>
-                                        </div>
+                                    <div className="flex justify-around items-center mt-20">
+                                        
+                                        <ItemCounter amount={amount} modifyAmount={setAmount} stock={stock}/>
 
-                                        <Link to="/carrito" className="item__detail__card__add flex justify-center mt-20"><span>Agregar al carrito</span></Link>
+                                        <button className="item__detail__card__add flex justify-center" onClick={handleAdd}><span>Agregar al carrito</span></button>
                                     </div>
                                     
                                 </div>

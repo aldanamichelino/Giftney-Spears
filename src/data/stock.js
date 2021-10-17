@@ -7,7 +7,8 @@ export const stock = [
         img: "/images/merch/britney-water-bottle.jpg",
         imgDescription: "Botella térmica blanca con logo rosa con la leyenda 'It's Britney, bitch'",
         category: 'accesorios',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 10
     },
     {
         id: 2,
@@ -17,7 +18,8 @@ export const stock = [
         img: "/images/merch/britney-hoodie.jpg",
         imgDescription: "Buzo de algodón blanco con caricaturas de Britney en distintas presentaciones y videos",
         category: 'indumentaria',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 20
     },
     {
         id: 3,
@@ -27,7 +29,8 @@ export const stock = [
         img: "/images/merch/britney-phone-case.jpg",
         imgDescription: "Carcasa para teléfono movil en color rosa con silueta de Britney en el video Baby one more time",
         category: 'accesorios',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 5
     },
     {
         id: 4,
@@ -37,7 +40,8 @@ export const stock = [
         img: "/images/merch/britney-rainbow-fantasy-perfume.jpg",
         imgDescription: "Perfume Fantasy Rainbow",
         category: 'perfumes',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 20
     },
     {
         id: 5,
@@ -47,7 +51,8 @@ export const stock = [
         img: "/images/merch/britney-shirt.jpg",
         imgDescription: "Remera negra con imagen de Britney bailando I'm a slave 4 U en los Video Music Awards 2001 en tonos opacos",
         category: 'indumentaria',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 15
     },
     {
         id: 6,
@@ -57,7 +62,8 @@ export const stock = [
         img: "/images/merch/britney-singles-collection-album.jpg",
         imgDescription: "CD del álbum The Sigles Collection",
         category: 'discos',
-        freeBritney: 0
+        freeBritney: 0,
+        stock: 5
     },
     {
         id: 7,
@@ -67,7 +73,8 @@ export const stock = [
         img: "/images/merch/free-britney-flag.jpg",
         imgDescription: "Bandera con leyenda Free Britney blanca y rosa",
         category: 'accesorios',
-        freeBritney: 1
+        freeBritney: 1,
+        stock: 60
     },
     {
         id: 8,
@@ -77,7 +84,8 @@ export const stock = [
         img: "/images/merch/free-britney-shirt-blue.jpg",
         imgDescription: "Remera azul con leyenda Free Britney en blanco y un corazón rosa",
         category: 'indumentaria',
-        freeBritney: 1
+        freeBritney: 1,
+        stock: 10
     },
     {
         id: 9,
@@ -87,6 +95,7 @@ export const stock = [
         img: "/images/merch/free-britney-shirt.jpg",
         imgDescription: "Remera negra con leyenda hashtag Free Britney en blanco y rosa",
         category: 'indumentaria',
-        freeBritney: 1
+        freeBritney: 1,
+        stock: 10
     },
 ]
