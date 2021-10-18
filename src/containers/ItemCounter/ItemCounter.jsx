@@ -2,6 +2,7 @@ import React from 'react';
 
 export const ItemCounter = ({ amount, modifyAmount, stock }) => {
 
+
     const handleLess = () => {
         if(amount > 1){
             modifyAmount(amount - 1);

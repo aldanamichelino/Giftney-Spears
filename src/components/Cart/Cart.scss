@@ -20,3 +20,16 @@
         color: $white;
     }
 }
+
+.cart__empty{
+    border: 2px solid $pink;
+    background: $pink;
+    color: $white;
+    padding: 5px;
+
+    &:hover{
+        background: $white;
+        border: 2px solid $pink;
+        color: $pink;
+    }
+}

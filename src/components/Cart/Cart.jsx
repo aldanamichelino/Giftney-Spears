@@ -5,7 +5,7 @@ import { CartItem } from '../CartItem/CartItem';
 
 export const Cart = () => {
 
-    const { cart } = useContext(CartContext);
+    const { cart, emptyCart, removeItemFromCart } = useContext(CartContext);
 
     return (
         <div className="container mx-auto mt-10">
@@ -22,14 +22,20 @@ export const Cart = () => {
                         <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                     </div>
 
-                    {cart.map((item) => {
-                        <CartItem/>
-                    })}
+                    { 
+                        cart.map( (item) => <CartItem {...item} removeItem={removeItemFromCart} key={item.id}/>)
+                    }
 
-                    <Link to="/" className="flex font-semibold text-sm mt-10">
-                        <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
-                        <span className="cart__arrow__back__text">Seguir comprando</span>
-                    </Link>
+                    <div className="flex justify-between mt-10">
+                        <Link to="/" className="flex font-semibold text-sm items-center">
+                            <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                            <span className="cart__arrow__back__text">Seguir comprando</span>
+                        </Link>
+
+                        <button className="cart__empty flex" onClick={emptyCart}>
+                            Vaciar carrito
+                        </button>
+                    </div>
                 </div>
 
                 <div id="summary" className="w-1/4 px-8 py-10">

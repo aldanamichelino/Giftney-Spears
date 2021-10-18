@@ -17,11 +17,16 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
             id,
             name,
             price,
+            img,
+            imgDescription,
             category,
+            stock,
             amount
         }
 
         addItemToCart(newItem);
+
+        
     }
 
     return (
