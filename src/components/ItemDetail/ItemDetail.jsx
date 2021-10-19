@@ -2,13 +2,14 @@ import React, {useState, useContext } from 'react';
 import { useHistory } from 'react-router';
 import { ItemCounter } from '../../containers/ItemCounter/ItemCounter';
 import { CartContext } from '../../contexts/CartContext';
+import { Link } from 'react-router-dom';
 
 
 export const ItemDetail = ({ id, name, price, img, description, imgDescription, category, stock, error }) => {
 
     const {goBack, push} = useHistory();
 
-    const { addItemToCart } = useContext(CartContext);
+    const { addItemToCart, isInCart } = useContext(CartContext);
 
     const [amount, setAmount] = useState(0);
 
@@ -25,8 +26,6 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
         }
 
         addItemToCart(newItem);
-
-        
     }
 
     return (
@@ -61,18 +60,31 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
                                     </div>
                                     
                                     <div className="flex justify-around items-center mt-20">
-                                        
-                                        <ItemCounter amount={amount} modifyAmount={setAmount} stock={stock}/>
+                                        {isInCart(id)
+                                            ?
+                                                <>
+                                                    <Link to="/" className="item__detail__card__add flex items-center mr-4">
+                                                        <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                                                        <span className="">Seguir comprando</span>
+                                                    </Link>
+                                                    <Link to="/carrito" className="item__detail__card__add">Finalizar compra</Link>
+                                                </>
+                                            :
+                                            <>
+                                                <ItemCounter amount={amount} modifyAmount={setAmount} stock={stock}/>
 
-                                        <button className="item__detail__card__add flex justify-center" onClick={handleAdd}><span>Agregar al carrito</span></button>
+                                                <button className="item__detail__card__add flex justify-center" onClick={handleAdd}><span>Agregar al carrito</span></button>
+                                            </>
+                                        }   
                                     </div>
+                                    
                                     
                                 </div>
                                 <div className="flex w-full align-bottom justify-end absolute bottom-6 right-8">
-                                        <button className="item__detail__card__buttonBack opacity-75 hover:opacity-100 hover:text-gray-900 rounded px-5
-                                        py-2 font-semibold" onClick={() => goBack()}>Volver</button>
-                                        <button className="item__detail__card__buttonBack opacity-75 hover:opacity-100 hover:text-gray-900 rounded px-5
-                                        py-2 font-semibold ml-4" onClick={() => push('/')}>Home</button>
+                                    <button className="item__detail__card__buttonBack opacity-75 hover:opacity-100 hover:text-gray-900 rounded px-5
+                                    py-2 font-semibold" onClick={() => goBack()}>Volver</button>
+                                    <button className="item__detail__card__buttonBack opacity-75 hover:opacity-100 hover:text-gray-900 rounded px-5
+                                    py-2 font-semibold ml-4" onClick={() => push('/')}>Home</button>
                                 </div>
                             </div>
                         </div>

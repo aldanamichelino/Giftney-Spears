@@ -9,6 +9,7 @@ import { ItemListContainer } from './containers/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from './containers/ItemDetailContainer/ItemDetailContainer';
 import { Cart } from './components/Cart/Cart';
 import { CartProvider } from './contexts/CartContext';
+import { UIProvider } from './contexts/UIContext';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faShoppingCart, faEye, faBackward, faHome, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -20,34 +21,35 @@ const App = () => {
 
   return (
     <div className="App flex flex-col justify-between">
+      <UIProvider>
+        <CartProvider>
+          <BrowserRouter>
 
-      <CartProvider>
-        <BrowserRouter>
+            <NavBar/>
 
-          <NavBar/>
+            <Switch>
+              <Route exact path="/">
+                <ItemListContainer/>
+              </Route>
+              <Route exact path="/productos/:categoryId">
+                <ItemListContainer/>
+              </Route>
+              <Route exact path="/item/:id">
+                <ItemDetailContainer/>
+              </Route>
+              <Route exact path="/carrito">
+                <Cart/>
+              </Route>
+              <Route path="*">
+                <Redirect to="/"/>
+              </Route>
+            </Switch>
 
-          <Switch>
-            <Route exact path="/">
-              <ItemListContainer/>
-            </Route>
-            <Route exact path="/productos/:categoryId">
-              <ItemListContainer/>
-            </Route>
-            <Route exact path="/item/:id">
-              <ItemDetailContainer/>
-            </Route>
-            <Route exact path="/carrito">
-              <Cart/>
-            </Route>
-            <Route path="*">
-              <Redirect to="/"/>
-            </Route>
-          </Switch>
+            <Footer/>
 
-          <Footer/>
-
-        </BrowserRouter>
-      </CartProvider>
+          </BrowserRouter>
+        </CartProvider>
+      </UIProvider>
     </div>
   );
 }

@@ -5,15 +5,17 @@ import { CartItem } from '../CartItem/CartItem';
 
 export const Cart = () => {
 
-    const { cart, emptyCart, removeItemFromCart } = useContext(CartContext);
+    const { cart, emptyCart, removeItemFromCart, totalSpent, totalItemsAmount } = useContext(CartContext);
 
     return (
         <div className="container mx-auto mt-10">
             <div className="cart__background flex my-10">
+                {totalItemsAmount() > 0 
+                ?
                 <div className="w-3/4 bg-white px-10 py-10">
                     <div className="flex justify-between border-b-2 border-pink-400 pb-8">
                         <h1 className="font-semibold text-2xl">Mi carrito</h1>
-                        <h2 className="font-semibold text-2xl">1 producto</h2>
+                        <h2 className="font-semibold text-2xl">{totalItemsAmount()} producto(s)</h2>
                     </div>
                     <div className="flex mt-10 mb-5">
                         <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
@@ -37,11 +39,26 @@ export const Cart = () => {
                         </button>
                     </div>
                 </div>
+                :
+                <div className="flex mt-5 mb-5 w-3/4 justify-center items-center">
+                    <div className="cart__background flex my-10">
+                        <div className="bg-white px-10 py-10">
+                            <h3 className="font-semibold text-gray-600 uppercase">No tenés regalos en tu carrito</h3>
+                            <Link to="/" className="flex font-semibold text-sm items-center">
+                                <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                                <span className="cart__arrow__back__text">Volver a comprar</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                }
+
 
                 <div id="summary" className="w-1/4 px-8 py-10">
                     <h1 className="font-semibold text-2xl border-b-2 border-pink-400 pb-8">Detalle del pedido</h1>
                     <div className="flex justify-between mt-10 mb-5">
-                        <span className="font-semibold text-sm uppercase">1 producto</span>
+                        <span className="font-semibold text-sm uppercase">{totalItemsAmount()} producto(s)</span>
                         {/* <span className="font-semibold text-sm">${ price }</span> */}
                     </div>
                     <div>
@@ -58,7 +75,7 @@ export const Cart = () => {
                     <div className="border-t-2 border-pink-400 mt-8">
                         <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                             <span>Costo total</span>
-                            {/* <span>${ price }</span> */}
+                            <span>${ totalSpent() }</span>
                         </div>
                         <button className="cart__buy__button font-semibold py-3 text-sm text-white uppercase w-full">Pagar</button>
                     </div>

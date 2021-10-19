@@ -18,8 +18,16 @@ export const CartProvider = ({ children }) => {
         setCart(newCart);
     }
 
-    const totalAmount = () => {
+    const totalItemsAmount = () => {
         return cart.reduce((acc, item) => acc + item.amount, 0);
+    }
+
+    const totalSpent = () => {
+        return cart.reduce((acc, item) => acc + item.amount * item.price, 0);
+    }
+
+    const isInCart = (itemId) => {
+        return cart.some((item) => item.id === itemId);
     }
 
     const emptyCart = () => {
@@ -33,7 +41,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalAmount, emptyCart}}>
+        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalItemsAmount, totalSpent, emptyCart, isInCart}}>
             { children }
         </CartContext.Provider>
     )

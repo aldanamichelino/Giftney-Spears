@@ -9,9 +9,8 @@ export const CartItem = ({id, img, imgDescription, name, category, price, amount
                 <div className="w-20">
                     <img className="" src={ img } alt={ imgDescription }/>
                 </div>
-                <div className="flex flex-col justify-between ml-4 flex-grow">
+                <div className="flex flex-col justify-center items-center ml-4 flex-grow">
                     <span className="font-bold text-sm">{ name }</span>
-                    <span className="text-red-500 text-xs">{ category }</span>
                 </div>
             </div>
             <div className="flex justify-center w-1/5">

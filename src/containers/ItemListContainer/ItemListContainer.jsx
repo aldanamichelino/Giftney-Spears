@@ -3,11 +3,12 @@ import { useParams } from 'react-router';
 import { getProducts } from '../../helpers/products';
 import { ItemList } from '../../components/ItemList/ItemList';
 import { Spinner } from '../../components/Spinner/Spinner';
+import { UIContext } from '../../contexts/UIContext';
 
 export const ItemListContainer = () => {
 
        const [items, setItems] = useState([]);
-       const [loading, setLoading] = useState(false);
+       const {loading, setLoading} = useContext(UIContext);
 
        const {categoryId} = useParams();
 
