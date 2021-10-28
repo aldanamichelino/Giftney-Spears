@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
-import { getProduct } from '../../helpers/products';
 import { ItemDetail } from '../../components/ItemDetail/ItemDetail';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { UIContext } from '../../contexts/UIContext';
+import { getFirestore } from '../../firebase/config';
 
 export const ItemDetailContainer = () => {
 
@@ -16,16 +16,24 @@ export const ItemDetailContainer = () => {
     useEffect(() => {
         setLoading(true);
 
-        getProduct(id)
-            .then((res) => {
-                setItem(res)
+        const db = getFirestore();
+        const items = db.collection('items');
+        const item = items.doc(id);
+
+        item.get()
+            .then((doc) => {
+                if(!doc.exists){
+                   setError('Oops! Este id de producto no existe. Si querés, contactate con nosotros.')
+                } else {
+                    setItem({id : doc.id, ...doc.data()});
+                }
+
             })
-            .catch((err) => setError(err))
             .finally(() => {
                 setLoading(false);
-        });
+            });
 
-    }, [id]);
+    }, [id, setLoading]);
 
     return (
         <section className="flex justify-center align-items-center">

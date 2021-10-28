@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
-import { getProducts } from '../../helpers/products';
 import { ItemList } from '../../components/ItemList/ItemList';
 import { Spinner } from '../../components/Spinner/Spinner';
 import { UIContext } from '../../contexts/UIContext';
+import { getFirestore } from '../../firebase/config';
 
 export const ItemListContainer = () => {
 
@@ -15,24 +15,36 @@ export const ItemListContainer = () => {
        useEffect(() => {
            setLoading(true);
 
-           getProducts()
-            .then((res) => {
-                if(categoryId){
-                    if(categoryId === 'freebritney'){
-                        setItems(res.filter(prod => prod.freeBritney === 1));
-                    } else {
-                        setItems(res.filter(prod => prod.category === categoryId));
-                    }
+           const db = getFirestore();
+
+           let items;
+           
+           if(categoryId){
+                if(categoryId === 'freebritney'){
+                    items = db.collection('items').where('freeBritney', '==', 1);
                 } else {
-                    setItems(res);
-                };
-             })
-            .catch((err) => console.log(err))
+                    items = db.collection('items').where('category', '==', categoryId);
+                }
+           } else {
+               items = db.collection('items');
+           }
+           
+
+           items.get()
+                .then((response) => {
+                    const items = response.docs.map((doc) => {
+                        return {id: doc.id, ...doc.data()}
+                    });
+
+                    setItems(items);
+                })
+
+                .catch((err) => console.log(err))
             .finally(() => {
                 setLoading(false);
             });
 
-       }, [categoryId]);
+       }, [categoryId, setLoading]);
 
        return (
            <section className="flex justify-center align-items-center">

@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router';
 import { ItemCounter } from '../../containers/ItemCounter/ItemCounter';
 import { CartContext } from '../../contexts/CartContext';
@@ -11,9 +11,10 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
 
     const { addItemToCart, isInCart } = useContext(CartContext);
 
-    const [amount, setAmount] = useState(0);
+        //crear estado que controle si se agregó algo al carrito y me muestre el botón
 
-    const handleAdd = () => {
+    const handleAdd = (amount) => {
+
         const newItem = {
             id,
             name,
@@ -25,7 +26,9 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
             amount
         }
 
-        addItemToCart(newItem);
+        addItemToCart(newItem, amount);
+
+        console.log(newItem)
     }
 
     return (
@@ -59,23 +62,19 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
                                         </div>
                                     </div>
                                     
-                                    <div className="flex justify-around items-center mt-20">
-                                        {isInCart(id)
-                                            ?
-                                                <>
-                                                    <Link to="/" className="item__detail__card__add flex items-center mr-4">
-                                                        <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
-                                                        <span className="">Seguir comprando</span>
-                                                    </Link>
-                                                    <Link to="/carrito" className="item__detail__card__add">Finalizar compra</Link>
-                                                </>
-                                            :
-                                            <>
-                                                <ItemCounter amount={amount} modifyAmount={setAmount} stock={stock}/>
+                                    <div className="flex flex-col items-center mt-20">
 
-                                                <button className="item__detail__card__add flex justify-center" onClick={handleAdd}><span>Agregar al carrito</span></button>
-                                            </>
-                                        }   
+                                        <ItemCounter id={id} stock={stock} handleAdd={handleAdd} isInCart={isInCart}/>
+                                            
+                                        <div className="flex justify-around my-4">
+                                            <Link to="/" className="item__detail__card__add flex items-center mr-4">
+                                                <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
+                                                <span className="">Seguir comprando</span>
+                                            </Link>
+
+                                            <Link to="/carrito" className="item__detail__card__add">Finalizar compra</Link>
+                                        </div>
+
                                     </div>
                                     
                                     

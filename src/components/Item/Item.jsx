@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FavoriteWidget } from '../FavoriteWidget/FavoriteWidget';
-import { CartWidget } from '../CartWidget/CartWidget';
 
 
 export const Item = ({ id, name, price, img, description, imgDescription, category, freeBritney}) => {

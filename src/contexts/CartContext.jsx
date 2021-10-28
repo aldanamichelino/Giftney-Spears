@@ -9,13 +9,30 @@ export const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState(init);
 
-    const addItemToCart = (item) => {
-        setCart( [...cart, item] );
+    console.log(cart);
+
+    const addItemToCart = (item, amount) => {
+            if(isInCart(item.id)){
+
+                return cart.map((existingItem) => existingItem.id === item.id ? {...existingItem, amount: existingItem.amount + amount} : item)
+                
+            } else {
+
+                setCart( [...cart, item]);
+            }
     }
 
+    // setCart((cart) => cart.map((existingItem) => existingItem.id === item.id ? {...existingItem, amount: existingItem.amount + amount} : item));
+    // ;
+    
     const removeItemFromCart = (itemId) => {
         const newCart = cart.filter((item) => item.id !== itemId);
         setCart(newCart);
+    }
+
+    const setAmount = (item, amount) => {
+       
+        console.log(cart);
     }
 
     const totalItemsAmount = () => {
@@ -28,7 +45,7 @@ export const CartProvider = ({ children }) => {
 
     const isInCart = (itemId) => {
         return cart.some((item) => item.id === itemId);
-    }
+    }    
 
     const emptyCart = () => {
         setCart([]);
@@ -41,7 +58,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalItemsAmount, totalSpent, emptyCart, isInCart}}>
+        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalItemsAmount, setAmount, totalSpent, emptyCart, isInCart}}>
             { children }
         </CartContext.Provider>
     )
