@@ -7,8 +7,6 @@ import { CartContext } from '../../contexts/CartContext';
 export const NavBar = () => {
 
     const { cart } = useContext(CartContext);
-
-    console.log(cart.length)
     return (
         <>
         <header className="header flex justify-center">

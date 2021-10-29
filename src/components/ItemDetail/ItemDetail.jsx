@@ -28,7 +28,6 @@ export const ItemDetail = ({ id, name, price, img, description, imgDescription, 
 
         addItemToCart(newItem, amount);
 
-        console.log(newItem)
     }
 
     return (

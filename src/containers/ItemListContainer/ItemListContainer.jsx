@@ -12,9 +12,10 @@ export const ItemListContainer = () => {
 
        const {categoryId} = useParams();
 
+       
        useEffect(() => {
            setLoading(true);
-
+           
            const db = getFirestore();
 
            let items;
@@ -35,7 +36,6 @@ export const ItemListContainer = () => {
                     const items = response.docs.map((doc) => {
                         return {id: doc.id, ...doc.data()}
                     });
-
                     setItems(items);
                 })
 
