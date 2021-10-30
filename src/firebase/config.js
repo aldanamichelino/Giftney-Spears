@@ -1,19 +1,24 @@
 import firebase from 'firebase/';
 import 'firebase/firestore';
+import 'firebase/auth';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDxOuZZAfEqk1BjIpaucxA3AKUAO8wGm8A",
-  authDomain: "giftney-spears.firebaseapp.com",
-  projectId: "giftney-spears",
-  storageBucket: "giftney-spears.appspot.com",
-  messagingSenderId: "212137482369",
-  appId: "1:212137482369:web:e7159066373d03e8391580"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 const app = firebase.initializeApp(firebaseConfig);
 
 export const getFirestore = () => {
     return firebase.firestore(app);
+}
+
+export const getAuth = () => {
+  return firebase.auth(app);
 }
 

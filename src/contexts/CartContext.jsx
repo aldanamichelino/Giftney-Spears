@@ -11,20 +11,15 @@ export const CartProvider = ({ children }) => {
     const addItemToCart = (item, amount) => {
         const itemIndexInCart = cart.findIndex(existingItem => existingItem.id === item.id);
 
-        let updatedCart = cart;
+        let updatedCart = [...cart];
         
         if(itemIndexInCart !== -1){
-            console.log('estoy en el carro');
-            cart[itemIndexInCart].amount += amount;
-            updatedCart = cart;
-            
+            updatedCart[itemIndexInCart].amount += amount;
         } else {
             updatedCart = [...cart, item];
-            
         }
 
         setCart(updatedCart);
-        console.log('carro', cart);
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
@@ -52,7 +47,6 @@ export const CartProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
-        console.log('estoy actualizando el carro');
     }, [cart]);
 
 

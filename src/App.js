@@ -21,6 +21,7 @@ const App = () => {
 
   return (
     <div className="App flex flex-col justify-between">
+      {/* falta el enrutado de authentication */}
       <UIProvider>
         <CartProvider>
           <BrowserRouter>
