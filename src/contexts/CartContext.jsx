@@ -9,6 +9,7 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(init);
 
     const addItemToCart = (item, amount) => {
+        //implementar un control para de no agregue más que lo hay en stock
         const itemIndexInCart = cart.findIndex(existingItem => existingItem.id === item.id);
 
         let updatedCart = [...cart];
