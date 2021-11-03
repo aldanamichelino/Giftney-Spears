@@ -1,20 +1,16 @@
 import React, {useState} from 'react';
 
-export const Form = () => { 
+export const Form = ({inputs}) => { 
 
     //modificarlo para que la cantidad de inputs sea dinámico
 
-    const [values, setValues] = useState({
-        name: '',
-        lastName: '',
-        email: '',
-        reEmail: ''
-
-    });
+    const [input, setInput] = useState(
+       inputs.map(input => input = '')
+    );
 
     const handleInputChange = (e) => {
-        setValues({
-            ...values,
+        setInput({
+            ...inputs,
             [e.target.name]: e.target.value
         })
     }

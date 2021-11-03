@@ -1,7 +1,7 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState} from 'react';
 
 
-export const ItemCounter = ({id, stock, handleAdd, isInCart, newItem }) => {
+export const ItemCounter = ({stock, handleAdd, buttonText }) => {
 
     const [amount, setAmount] = useState(0);
 
@@ -21,13 +21,13 @@ export const ItemCounter = ({id, stock, handleAdd, isInCart, newItem }) => {
 
     return (
         <div className="flex justify-around items-center">
-           <div className="flex mr-4">
-                <button onClick={handleLess}>-</button>
+           <div className="flex mr-4 items-center">
+                <button className="counter__control" onClick={handleLess}>-</button>
                     <span className="mx-2">{amount}</span>
-                <button onClick={handleMore}>+</button>
+                <button className="counter__control" onClick={handleMore}>+</button>
            </div>
 
-            <button className="item__detail__card__add flex justify-center" onClick={() => handleAdd(amount)}><span>Agregar al carrito</span></button>
+            <button disabled={amount < 1 ? true : ''} className="item__detail__card__add flex justify-center rounded-md"  onClick={() => handleAdd(amount)}><span>{buttonText}</span></button>
         </div>
     )
 }

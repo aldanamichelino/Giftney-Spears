@@ -7,24 +7,25 @@
         padding: 10px;
     }
 
-    &__buttonBack{
-        background: $pink;
-        color: $white;
-    }
-
     &__amount{
         background: $white;
     }
 
-    &__add{
-        border: 2px solid $pink;
-        color: $pink;
+    .item__detail__buy__cart, .item__detail__keep__buying{
+        background: $pink;
+        border: 2px solid $baby-pink;
+        color: $white;
         padding: 5px;
 
         &:hover{
-            background: $strong-gray;
             border: 2px solid $strong-gray;
-            color: $white;
         }
+        
     }
+
+    a.disabled{
+         opacity: 0.5;
+         pointer-events: none;
+     }
+
 }

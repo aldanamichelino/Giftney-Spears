@@ -1,0 +1,25 @@
+button{
+    &:disabled{
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+.item__detail__card__add{
+    border: 2px solid $sweet-green;
+    background: darken($sweet-green, 25%);
+    color: $white;
+    padding: 5px;
+
+    &:hover{
+        border: 2px solid $pink;
+        color: $pink;
+    }
+}
+
+.counter__control{
+    padding: 5px 10px;
+    background: $white;
+    margin: 2px;
+    border-radius: 4px;
+}

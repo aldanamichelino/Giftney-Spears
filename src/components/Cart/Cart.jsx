@@ -5,17 +5,18 @@ import { CartItem } from '../CartItem/CartItem';
 
 export const Cart = () => {
 
-    const { cart, emptyCart, removeItemFromCart, totalSpent, totalItemsAmount } = useContext(CartContext);
+    const { cart, emptyCart, removeItemFromCart, totalItemsAmount, totalSpent } = useContext(CartContext);
 
     return (
-        <div className="container mx-auto mt-10">
-            <div className="cart__background flex my-10">
+        <div className="container mx-auto">
+            <div className="cart__background flex justify-center">
                 {totalItemsAmount() > 0 
                 ?
-                <div className="w-3/4 bg-white px-10 py-10">
+                <div className="w-3/4 items-center bg-white px-10 py-10">
                     <div className="flex justify-between border-b-2 border-pink-400 pb-8">
                         <h1 className="font-semibold text-2xl">Mi carrito</h1>
                         <h2 className="font-semibold text-2xl">{totalItemsAmount()} producto(s)</h2>
+                        <h2 className="font-semibold text-2xl">Total: ${totalSpent()}</h2>
                     </div>
                     <div className="flex mt-10 mb-5">
                         <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
@@ -28,23 +29,25 @@ export const Cart = () => {
                         cart.map( (item) => <CartItem {...item} removeItem={removeItemFromCart} key={item.id}/>)
                     }
 
-                    <div className="flex justify-between mt-10">
-                        <Link to="/" className="flex font-semibold text-sm items-center">
+                    <div className="flex justify-end mt-10 items-center">
+                        <Link to="/" className="cart__back flex font-semibold text-sm items-center mr-4 rounded-lg">
                             <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
                             <span className="cart__arrow__back__text">Seguir comprando</span>
                         </Link>
 
-                        <button className="cart__empty flex" onClick={emptyCart}>
+                        <button className="cart__empty flex mr-4 rounded-lg" onClick={emptyCart}>
                             Vaciar carrito
                         </button>
+
+                        <Link to="/checkout" className="cart__finish rounded-lg">Terminar mi compra</Link>
                     </div>
                 </div>
                 :
                 <div className="flex mt-5 mb-5 w-3/4 justify-center items-center">
                     <div className="cart__background flex my-10">
                         <div className="bg-white px-10 py-10">
-                            <h3 className="font-semibold text-gray-600 uppercase">No tenés regalos en tu carrito</h3>
-                            <Link to="/" className="flex font-semibold text-sm items-center">
+                            <h3 className="font-semibold text-gray-600 uppercase">No tenés items en tu carrito</h3>
+                            <Link to="/" className="flex font-semibold text-sm items-center rounded-lg">
                                 <svg className="cart__arrow__back fill-current mr-2 w-4" viewBox="0 0 448 512"><path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"/></svg>
                                 <span className="cart__arrow__back__text">Volver a comprar</span>
                             </Link>
@@ -53,33 +56,6 @@ export const Cart = () => {
                 </div>
 
                 }
-
-
-                <div id="summary" className="w-1/4 px-8 py-10">
-                    <h1 className="font-semibold text-2xl border-b-2 border-pink-400 pb-8">Detalle del pedido</h1>
-                    <div className="flex justify-between mt-10 mb-5">
-                        <span className="font-semibold text-sm uppercase">{totalItemsAmount()} producto(s)</span>
-                        {/* <span className="font-semibold text-sm">${ price }</span> */}
-                    </div>
-                    <div>
-                        <label className="font-medium inline-block mb-3 text-sm uppercase">Envío</label>
-                        <select className="block p-2 text-gray-600 w-full text-sm">
-                            <option>A CABA - $350</option>
-                        </select>
-                    </div>
-                    <div className="py-10">
-                        <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Código de descuento</label>
-                        <input type="text" id="promo" placeholder="Ingresá tu código" className="p-2 text-sm w-full"/>
-                    </div>
-                    <button className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Aplicar</button>
-                    <div className="border-t-2 border-pink-400 mt-8">
-                        <div className="flex font-semibold justify-between py-6 text-sm uppercase">
-                            <span>Costo total</span>
-                            <span>${ totalSpent() }</span>
-                        </div>
-                        <button className="cart__buy__button font-semibold py-3 text-sm text-white uppercase w-full">Pagar</button>
-                    </div>
-                </div>
             </div>
         </div>
     )

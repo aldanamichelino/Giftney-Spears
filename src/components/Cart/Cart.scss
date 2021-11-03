@@ -2,33 +2,46 @@
     background: lighten($sweet-green, 25%);
 }
 
-.cart__arrow__back{
-    color: $pink;
-
-    &__text{
-        color: $pink;
-    }
-}
-
-.cart__buy__button{
-    border: 2px solid $pink;
-    color: $pink;
-
-    &:hover{
-        background: $strong-gray;
-        border: 2px solid $strong-gray;
-        color: $white;
-    }
-}
-
-.cart__empty{
-    border: 2px solid $pink;
+.cart__back{
+    border: 2px solid $baby-pink;
     background: $pink;
     color: $white;
     padding: 5px;
 
     &:hover{
-        background: $white;
+        border: 2px solid $pink;
+        color: $pink;
+    }
+}
+
+.cart__arrow__back{
+    color: $white;
+
+    &__text{
+        color: $white;
+        padding: 2px;
+    }
+}
+
+.cart__finish{
+    border: 2px solid $sweet-green;
+    background: darken($sweet-green, 25%);
+    color: $white;
+    padding: 5px;
+
+    &:hover{
+        border: 2px solid $pink;
+        color: $pink;
+    }
+}
+
+.cart__empty{
+    background: $strong-gray;
+    border: 2px solid $soft-gray;
+    color: $white;
+    padding: 5px;
+
+    &:hover{
         border: 2px solid $pink;
         color: $pink;
     }
