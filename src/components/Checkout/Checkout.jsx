@@ -18,8 +18,6 @@ export const Checkout = () => {
         reEmail: '',
         tel: ''
     };
-
-    
     
     const processOrder = (values) => {
         generateOrder(values, cart, totalItemsAmount())
@@ -72,67 +70,8 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <Form inputs={values} processOrder={processOrder}/>
+            <Form formTitle={'Completá tus datos'} inputs={values} processOrder={processOrder}/>
 
-            {/* <form onSubmit={handleSubmit} className="w-full max-w-sm self-center px-8 py-10">
-                <h2 className="font-semibold text-2xl pb-8">Completá tus datos</h2>
-                <div className="form__input__div flex flex-col items-center py-2">
-                    <input 
-                        className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" 
-                        placeholder="Nombre"
-                        aria-label="Nombre" 
-                        name="name" 
-                        value={values.name}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="form__input__div flex flex-col items-center py-2">
-                    <input 
-                        className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" 
-                        placeholder="Apellido"
-                        aria-label="lastNameo" 
-                        name="lastName" 
-                        value={values.lastName}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="form__input__div flex flex-col items-center py-2">      
-                    <input 
-                        className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none" type="email" 
-                        placeholder="Email"
-                        aria-label="Email" 
-                        name="Email" 
-                        value={values.email}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="form__input__div flex flex-col items-center py-2">
-                    <input 
-                        className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none" type="email" 
-                        placeholder="Repetí tu email"
-                        aria-label="reEmail" 
-                        name="reEmail" 
-                        value={values.reEmail}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="form__input__div flex flex-col items-center py-2">
-                    <input 
-                        className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" 
-                        placeholder="Teléfono"
-                        aria-label="Teléfono" 
-                        name="tel" 
-                        value={values.tel}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                    <button 
-                    className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded mt-4" 
-                    type="submit"
-                    disable={loading}>
-                    Realizar compra
-                    </button>
-            </form> */}
        </div>
     )
 }

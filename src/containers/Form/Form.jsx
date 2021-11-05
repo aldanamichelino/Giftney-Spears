@@ -1,16 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import { UIContext } from '../../contexts/UIContext';
 
-export const Form = ({inputs, processOrder}) => {
-
-
-    //modificarlo para que la cantidad de inputs sea dinámico
+export const Form = ({formTitle, inputs, processOrder}) => {
 
     const [values, setValues] = useState(inputs);
-
-    console.log(values.name);
-
-    //ver porqué cuando paso inputsObject como prop desde Checkout pincha viene como undefined
+    const [errorMessage, setErrorMessage] = useState('Mensaje de error');
 
     const inputsObject = [
         {
@@ -40,13 +34,20 @@ export const Form = ({inputs, processOrder}) => {
         {
             type: 'text',
             placeholder: 'Teléfono',
-            name: 'telephone',
-            value: values.telephone,        
+            name: 'tel',
+            value: values.tel,        
         },
     ];
 
-    // const {loading, setLoading} = useContext(UIContext);
 
+    const emailRegex = new RegExp(/^[a-zA-Z0-9ñÑ\.-]+@[a-zA-Z0-9ñÑ\.-]+\.\w{2,4}\b/);
+    const telRegex = new RegExp(/^[0-9\s\-\+\(\)]+$/);
+
+
+    //ver porqué cuando paso inputsObject como prop desde Checkout pincha viene como undefined
+    //acá iban los inputs
+
+    // const {loading, setLoading} = useContext(UIContext);
 
     const handleInputChange = (e) => {
 
@@ -61,24 +62,26 @@ export const Form = ({inputs, processOrder}) => {
 
         // setLoading(true);
         
-        if (values.name.length < 3) {
-            alert("Nombre inválido")
+        if (values.name === '') {
+            setErrorMessage('Agrega un nombre');
             return
         }
-        if (values.lastName.length < 3) {
-            alert("Apellido inválido")
+        if (values.lastName === '') {
+            setErrorMessage('Agrega un apellido');
             return
         }
-        if (values.email.length < 3) {
-            alert("Email inválido")
+        if (!emailRegex.test(values.email.value)) {
+            console.log('no paso el test')
+            setErrorMessage("Email inválido");
             return
         }
         if (values.reEmail.value !== values.email.value) {
-            alert("Los emails no coinciden")
+            setErrorMessage('Los emails no coinciden');
             return
         }
-        if (values.tel.length < 7) {
-            alert("Teléfono inválido")
+        if (!telRegex.test(values.tel.value)) {
+            console.log('no paso el test')
+            setErrorMessage('Teléfono inválido');
             return
         }
 
@@ -86,25 +89,29 @@ export const Form = ({inputs, processOrder}) => {
     }
 
     return (
-        <div className="container my-2">
 
-            <form onSubmit={handleSubmit}>
-                
-                {inputsObject.map((input) => (
-                   <input
-                        className="my-2"
-                        type={input.type} 
-                        placeholder={input.placeholder}
-                        name={input.name}
-                        value={input.value}
-                        onChange={handleInputChange}
-                    />
-                    )
-                )}
-
-                <button type="submit">Enviar</button>
-            </form>
+        <form onSubmit={handleSubmit} className="w-full max-w-sm self-center px-8 py-10">
+            <h2 className="font-semibold text-2xl pb-8">{formTitle}</h2>
             
-        </div>
+            {inputsObject.map((input) => (
+                <>
+                    <div className="form__input__div flex flex-col items-center py-2">
+                        <input
+                            className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
+                            type={input.type} 
+                            placeholder={input.placeholder}
+                            name={input.name}
+                            value={input.value}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <p>{errorMessage}</p>
+                </>
+                )
+            )}
+
+            <button className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded mt-4" type="submit">Comprar</button>
+            {/* disable={loading} */}
+        </form>
     )
 }
