@@ -3,59 +3,25 @@ import { Redirect } from 'react-router';
 import { CartContext } from '../../contexts/CartContext';
 import { generateOrder } from '../../firebase/generateOrder';
 import Swal from 'sweetalert2';
-import { UIContext } from '../../contexts/UIContext';
-import { Spinner } from '../Spinner/Spinner';
+import { Form } from '../../containers/Form/Form';
 
 //importar el form y pasarle los datos de forma dinámica, ver dónde se consume para modificar datos en los padres
 
 export const Checkout = () => {
 
-    const {loading, setLoading} = useContext(UIContext);
-
     const { cart, totalItemsAmount, emptyCart, totalSpent } = useContext(CartContext);
 
-    const [values, setValues] = useState({
+    const values = {
         name: '',
         lastName: '',
         email: '',
         reEmail: '',
         tel: ''
-    
-    });
-    
-    const handleInputChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value
-        })
-    }
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    };
 
-        if (values.name.length < 3) {
-            alert("Nombre inválido")
-            return
-        }
-        if (values.lastName.length < 3) {
-            alert("Apellido inválido")
-            return
-        }
-        if (values.email.length < 3) {
-            alert("Email inválido")
-            return
-        }
-        if (values.reEmail.value !== values.email.value) {
-            alert("Los emails no coinciden")
-            return
-        }
-        if (values.tel.length < 7) {
-            alert("Teléfono inválido")
-            return
-        }
-
-        setLoading(true);
-
+    
+    
+    const processOrder = (values) => {
         generateOrder(values, cart, totalItemsAmount())
             .then((res) => {
                 Swal.fire({
@@ -74,7 +40,7 @@ export const Checkout = () => {
                     title: 'Producto sin stock',
                   })
             })
-            .finally(() => setLoading(false));
+            // .finally(() => setLoading(false));
     }
 
     return (
@@ -82,7 +48,7 @@ export const Checkout = () => {
        <div className="flex justify-center">
         {cart.length === 0 && <Redirect to="/"/>}
         {/* chequear que al hacer loading no se pueda volver a apretar enviar */}
-        {loading && <Spinner/>}
+        {/* {loading && <Spinner/>} */}
             <div id="summary" className="w-1/4 items-center px-8 py-10">
                 <h1 className="form__input__div font-semibold text-2xl pb-8">Detalle del pedido</h1>
                 <div className="flex justify-between py-6">
@@ -106,7 +72,9 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="w-full max-w-sm self-center px-8 py-10">
+            <Form inputs={values} processOrder={processOrder}/>
+
+            {/* <form onSubmit={handleSubmit} className="w-full max-w-sm self-center px-8 py-10">
                 <h2 className="font-semibold text-2xl pb-8">Completá tus datos</h2>
                 <div className="form__input__div flex flex-col items-center py-2">
                     <input 
@@ -164,7 +132,7 @@ export const Checkout = () => {
                     disable={loading}>
                     Realizar compra
                     </button>
-            </form>
+            </form> */}
        </div>
     )
 }

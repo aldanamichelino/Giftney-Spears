@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
 
-export const ItemCounter = ({stock, handleAdd, buttonText }) => {
+export const ItemCounter = ({ stock, handleAdd, buttonText }) => {
 
-    const [amount, setAmount] = useState(0);
+    const [amount, setAmount] = useState(1);
 
     const handleLess = () => {
         if(amount > 1){

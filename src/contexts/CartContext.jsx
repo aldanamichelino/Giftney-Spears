@@ -30,6 +30,24 @@ export const CartProvider = ({ children }) => {
         setCart(newCart);
     }
 
+    const itemAmountInCart = (id) => {
+        const item = cart.find((item) => item.id === id);
+        return item ? item.amount : 0;
+    }
+
+    const modifyItemAmountInCart = (id, amount) => {
+        const itemIndexInCart = cart.findIndex(existingItem => existingItem.id === id);
+
+        let updatedCart = [...cart];
+        
+        if(itemIndexInCart !== -1){
+            updatedCart[itemIndexInCart].amount = amount;
+        }
+
+        setCart(updatedCart);
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
     const totalItemsAmount = () => {
        return cart.reduce((acc, item) => acc + item.amount, 0);
     }
@@ -53,7 +71,7 @@ export const CartProvider = ({ children }) => {
 
 
     return (
-        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalItemsAmount, totalSpent, emptyCart, isInCart}}>
+        <CartContext.Provider value={{cart, addItemToCart, removeItemFromCart, totalItemsAmount, itemAmountInCart, modifyItemAmountInCart, totalSpent, emptyCart, isInCart}}>
             { children }
         </CartContext.Provider>
     )

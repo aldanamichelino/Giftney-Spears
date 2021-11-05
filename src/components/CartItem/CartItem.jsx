@@ -1,7 +1,7 @@
 import React from 'react';
 import { TrashWidget } from '../TrashWidget/TrashWidget';
 import { Link } from 'react-router-dom';
-import { ItemCounter } from '../../containers/ItemCounter/ItemCounter';
+import { CartItemCounter } from '../../containers/CartItemCounter/CartItemCounter';
 
 export const CartItem = ({id, img, imgDescription, name, category, price, amount, removeItem, stock}) => {
 
@@ -17,7 +17,7 @@ export const CartItem = ({id, img, imgDescription, name, category, price, amount
                 </div>
             </Link>
 
-            <ItemCounter stock={stock} buttonText={'Agregar'}/>
+            <CartItemCounter stock={stock} id={id}/>
             
             <span className="text-center w-1/5 font-semibold text-sm">${ price }</span>
             <span className="text-center w-1/5 font-semibold text-sm">${ price * amount } </span>
