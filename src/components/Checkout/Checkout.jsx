@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import { Redirect } from 'react-router';
 import { CartContext } from '../../contexts/CartContext';
 import { generateOrder } from '../../helpers/generateOrder';
@@ -12,14 +12,15 @@ export const Checkout = () => {
     const { cart, totalItemsAmount, emptyCart, totalSpent } = useContext(CartContext);
     const {loading, setLoading} = useContext(UIContext);
 
-    const values = {
+    const [values, setValues] = useState({
         name: '',
         lastName: '',
         email: '',
         reEmail: '',
         tel: ''
         //email podría sacarse de session?
-    };
+    });
+
 
     const inputsObject = [
         {
@@ -104,7 +105,7 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <Form formTitle={'Completá tus datos'} inputs={values} inputsObject={inputsObject} processOrder={processOrder} loading={loading}/>
+            <Form formTitle={'Completá tus datos'} values={values} inputsObject={inputsObject} processOrder={processOrder} loading={loading} setValues={setValues} buttonTitle={'Comprar'}/>
 
             {loading && <Spinner/>}
 

@@ -1,15 +1,12 @@
 import React, {useState} from 'react';
 import { WarningWidget } from '../../components/Widgets/WarningWidget/WarningWidget';
 
-export const Form = ({formTitle, inputs, inputsObject, processOrder, loading}) => {
+export const Form = ({formTitle, values, inputsObject, processOrder, loading, setValues, buttonTitle}) => {
 
-    const [values, setValues] = useState(inputs);
     const [errorMessage, setErrorMessage] = useState('');
     const [errorField, setErrorField] = useState('');
     const emailRegex = /^[a-zA-Z0-9ñÑ.-]+@[a-zA-Z0-9ñÑ.-]+\.\w{2,4}\b/;
     const telRegex = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/;
-
-    //ver porqué cuando paso inputsObject como prop desde Checkout pincha viene como undefined
 
     const handleInputChange = (e) => {
         setValues({
@@ -19,6 +16,7 @@ export const Form = ({formTitle, inputs, inputsObject, processOrder, loading}) =
     }
 
     const handleSubmit = (e) => {
+        //acá recibe lo que tiene que hacer en el handleSubmit
 
         e.preventDefault();
         
@@ -75,7 +73,7 @@ export const Form = ({formTitle, inputs, inputsObject, processOrder, loading}) =
                 ) 
             }
 
-            <button className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded mt-4" type="submit" disabled={loading}>Comprar</button>
+            <button className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded mt-4" type="submit" disabled={loading}>{buttonTitle}</button>
         </form>
     )
 }

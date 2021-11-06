@@ -2,7 +2,7 @@
 import './sass/App.scss';
 import './index.css';
 
-import React from 'react';
+import { useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { NavBar } from './components/NavBar/NavBar';
 import { Footer } from './components/Footer/Footer';
@@ -12,6 +12,8 @@ import { Cart } from './components/Cart/Cart';
 import { Checkout } from './components/Checkout/Checkout';
 import { CartProvider } from './contexts/CartContext';
 import { UIProvider } from './contexts/UIContext';
+import { UserAuthContext } from './contexts/UserAuthContext';
+import { UserAuthenticate } from './components/UserAuthenticate/UserAuthenticate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faShoppingCart, faEye, faBackward, faHome, faTrash, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
@@ -21,40 +23,48 @@ library.add(fab, faShoppingCart, faHeart, faEye, faBackward, faHome, faTrash, fa
 
 const App = () => {
   
+  const { isAuthenticated } = useContext(UserAuthContext);
+  
   return (
     <div className="App flex flex-col justify-between">
-  
-      {/* falta el enrutado de authentication */}
+
       <UIProvider>
         <CartProvider>
-          <BrowserRouter>
 
+          <BrowserRouter>
             <NavBar/>
 
             <Switch>
-              <Route exact path="/">
-                <ItemListContainer/>
-              </Route>
-              <Route exact path="/productos/:categoryId">
-                <ItemListContainer/>
-              </Route>
-              <Route exact path="/item/:id">
-                <ItemDetailContainer/>
-              </Route>
-              <Route exact path="/carrito">
-                <Cart/>
-              </Route>
-              <Route exact path="/checkout">
-                <Checkout/>
-              </Route>
-              <Route path="*">
-                <Redirect to="/"/>
-              </Route>
+            <UserAuthenticate/>
+              {isAuthenticated ?
+                  <>
+                    <Route exact path="/">
+                      <ItemListContainer/>
+                    </Route>
+                    <Route exact path="/productos/:categoryId">
+                      <ItemListContainer/>
+                    </Route>
+                    <Route exact path="/item/:id">
+                      <ItemDetailContainer/>
+                    </Route>
+                    <Route exact path="/carrito">
+                      <Cart/>
+                    </Route>
+                    <Route exact path="/checkout">
+                      <Checkout/>
+                    </Route>
+                    <Route path="*">
+                      <Redirect to="/"/>
+                    </Route>
+                  </>
+                :
+                <UserAuthenticate/>
+              } 
             </Switch>
 
             <Footer/>
-
           </BrowserRouter>
+          
         </CartProvider>
       </UIProvider>
     </div>

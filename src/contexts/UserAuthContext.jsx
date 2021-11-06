@@ -15,15 +15,14 @@ export const UserAuthProvider = ({children}) => {
 
     const value = {
         isAuthenticated,
+        setIsAuthenticated,
         currentUser,
+        setCurrentUser,
         login
     }
 
     return (
-        <UserAuthContext.Provider value={{
-            isAuthenticated,
-            setIsAuthenticated
-        }}>
+        <UserAuthContext.Provider value={{value}} >
             {children}
         </UserAuthContext.Provider>
     )
