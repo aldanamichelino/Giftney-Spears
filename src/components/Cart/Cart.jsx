@@ -21,8 +21,8 @@ export const Cart = () => {
                     <div className="flex mt-10 mb-5">
                         <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
                         <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad</h3>
-                        <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
-                        <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+                        <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Precio unitario</h3>
+                        <h3 className="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total por producto</h3>
                     </div>
 
                     { 

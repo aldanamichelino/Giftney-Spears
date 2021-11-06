@@ -18,7 +18,41 @@ export const Checkout = () => {
         email: '',
         reEmail: '',
         tel: ''
+        //email podría sacarse de session?
     };
+
+    const inputsObject = [
+        {
+            type: 'text',
+            placeholder: 'Nombre',
+            name: 'name',
+            value: values.name,        
+        },
+        {
+            type: 'text',
+            placeholder: 'Apellido',
+            name: 'lastName',
+            value: values.lastName,        
+        },
+        {
+            type: 'email',
+            placeholder: 'Correo electrónico',
+            name: 'email',
+            value: values.email,        
+        },
+        {
+            type: 'email',
+            placeholder: 'Reintroducí tu correo electrónico',
+            name: 'reEmail',
+            value: values.reEmail,        
+        },
+        {
+            type: 'text',
+            placeholder: 'Teléfono',
+            name: 'tel',
+            value: values.tel,        
+        },
+    ];
     
     const processOrder = (values) => {
         setLoading(true);
@@ -70,7 +104,7 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <Form formTitle={'Completá tus datos'} inputs={values} processOrder={processOrder} loading={loading}/>
+            <Form formTitle={'Completá tus datos'} inputs={values} inputsObject={inputsObject} processOrder={processOrder} loading={loading}/>
 
             {loading && <Spinner/>}
 
