@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrashWidget } from '../TrashWidget/TrashWidget';
+import { TrashWidget } from '../Widgets/TrashWidget/TrashWidget';
 import { Link } from 'react-router-dom';
 import { CartItemCounter } from '../../containers/CartItemCounter/CartItemCounter';
 

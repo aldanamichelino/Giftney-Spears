@@ -1,6 +1,6 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CartContext } from '../../contexts/CartContext';
+import { CartContext } from '../../../contexts/CartContext';
 
 export const CartWidget = () => {
 

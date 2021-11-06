@@ -1,15 +1,16 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import { Redirect } from 'react-router';
 import { CartContext } from '../../contexts/CartContext';
-import { generateOrder } from '../../firebase/generateOrder';
+import { generateOrder } from '../../helpers/generateOrder';
 import Swal from 'sweetalert2';
 import { Form } from '../../containers/Form/Form';
-
-//importar el form y pasarle los datos de forma dinámica, ver dónde se consume para modificar datos en los padres
+import { Spinner } from '../Spinner/Spinner';
+import { UIContext } from '../../contexts/UIContext';
 
 export const Checkout = () => {
 
     const { cart, totalItemsAmount, emptyCart, totalSpent } = useContext(CartContext);
+    const {loading, setLoading} = useContext(UIContext);
 
     const values = {
         name: '',
@@ -20,6 +21,7 @@ export const Checkout = () => {
     };
     
     const processOrder = (values) => {
+        setLoading(true);
         generateOrder(values, cart, totalItemsAmount())
             .then((res) => {
                 Swal.fire({
@@ -38,21 +40,19 @@ export const Checkout = () => {
                     title: 'Producto sin stock',
                   })
             })
-            // .finally(() => setLoading(false));
+            .finally(() => setLoading(false));
     }
 
     return (
 
        <div className="flex justify-center">
         {cart.length === 0 && <Redirect to="/"/>}
-        {/* chequear que al hacer loading no se pueda volver a apretar enviar */}
-        {/* {loading && <Spinner/>} */}
+        
             <div id="summary" className="w-1/4 items-center px-8 py-10">
                 <h1 className="form__input__div font-semibold text-2xl pb-8">Detalle del pedido</h1>
                 <div className="flex justify-between py-6">
                     <span className="font-semibold text-sm uppercase">Cantidad total:</span>
                     <span>{totalItemsAmount()} producto(s)</span>
-                    {/* <span className="font-semibold text-sm">${ price }</span> */}
                 </div>
                 { 
                     cart.map( (item) => 
@@ -70,7 +70,9 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <Form formTitle={'Completá tus datos'} inputs={values} processOrder={processOrder}/>
+            <Form formTitle={'Completá tus datos'} inputs={values} processOrder={processOrder} loading={loading}/>
+
+            {loading && <Spinner/>}
 
        </div>
     )

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FavoriteWidget } from '../FavoriteWidget/FavoriteWidget';
+import { FavoriteWidget } from '../Widgets/FavoriteWidget/FavoriteWidget';
 
 
 export const Item = ({ id, name, price, img, description, imgDescription, category, freeBritney}) => {

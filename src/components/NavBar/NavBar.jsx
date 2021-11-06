@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from 'react-router-dom';
 import giftneyLogo from '../../assets/static/britney.svg';
-import { CartWidget } from '../CartWidget/CartWidget';
+import { CartWidget } from '../Widgets/CartWidget/CartWidget';
 import { CartContext } from '../../contexts/CartContext';
 
 export const NavBar = () => {

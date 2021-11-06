@@ -1,5 +1,5 @@
 import 'firebase/firestore';
-import { getFirestore } from './config';
+import { getFirestore } from '../firebase/config';
 import firebase from 'firebase';
 
 export const generateOrder = (userData, cart, total) => {
@@ -39,7 +39,6 @@ export const generateOrder = (userData, cart, total) => {
                         .then((res) => {
                             batch.commit();
                             resolve(res.id);
-                            //redireccionar a un mensaje de success compra mostrando el id de la compra
                         });
                 } else {
                     reject(outOfStock);
@@ -48,25 +47,4 @@ export const generateOrder = (userData, cart, total) => {
 
     })
 
-
-
-
-    
-
-        // cart.forEach((item) => {
-            //     const docRef = db.collection('items').doc(item.id);
-            //     docRef.get()
-            //         .then((doc) => {
-            //            if(doc.data().stock >= item.amount){
-            //             docRef.update({
-            //                 stock: doc.data().stock - item.amount
-            //             })
-            //            } else{
-            //                 Swal.fire({
-            //                     icon: 'error',
-            //                     title: 'No hay stock suficiente de este producto',
-            //                 })
-            //            }
-            //         })
-            // })
 }

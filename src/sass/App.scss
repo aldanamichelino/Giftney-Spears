@@ -4,17 +4,19 @@
 @import '../components/Footer/Footer.scss';
 @import '../components/Item/Item.scss';
 @import '../components/ItemList/ItemList.scss';
-@import '../components/CartWidget/CartWidget.scss';
-@import '../components/FavoriteWidget/FavoriteWidget.scss';
-@import '../components/ViewDetailsWidget/ViewDetailsWidget.scss';
-@import '../components/BackwardWidget/BackwardWidget.scss';
-@import '../components/TrashWidget/TrashWidget.scss';
-@import '../components/HomeWidget/HomeWidget.scss';
+@import '../components/Widgets/CartWidget/CartWidget.scss';
+@import '../components/Widgets/FavoriteWidget/FavoriteWidget.scss';
+@import '../components/Widgets/ViewDetailsWidget/ViewDetailsWidget.scss';
+@import '../components/Widgets/BackwardWidget/BackwardWidget.scss';
+@import '../components/Widgets/TrashWidget/TrashWidget.scss';
+@import '../components/Widgets/HomeWidget/HomeWidget.scss';
+@import '../components/Widgets/WarningWidget/WarningWidget.scss';
 @import '../components/ItemDetail/ItemDetail.scss';
 @import '../components/Cart/Cart.scss';
 @import '../components/Checkout/Checkout.scss';
 @import '../containers/ItemListContainer/ItemListContainer.scss';
 @import '../containers/ItemCounter/ItemCounter.scss';
+@import '../containers/Form/Form.scss';
 
 
 

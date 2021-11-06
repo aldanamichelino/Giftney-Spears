@@ -9,16 +9,20 @@ export const CartItemCounter = ({id, stock}) => {
 
     const handleLess = () => {
         if(amount > 1){
-            setAmount(amount - 1);
-            modifyItemAmountInCart(id, amount);
-        }
 
+            let newAmount = amount - 1;
+            setAmount(newAmount);
+            modifyItemAmountInCart(id, newAmount);
+
+        }
     }
     
     const handleMore = () => {
         if(amount < stock){
-            setAmount(amount + 1);
-            modifyItemAmountInCart(id, amount);      
+
+            let newAmount = amount + 1;
+            setAmount(newAmount);
+            modifyItemAmountInCart(id, newAmount);
         }
     }
 

@@ -14,9 +14,9 @@ import { CartProvider } from './contexts/CartContext';
 import { UIProvider } from './contexts/UIContext';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faShoppingCart, faEye, faBackward, faHome, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faShoppingCart, faEye, faBackward, faHome, faTrash, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 
-library.add(fab, faShoppingCart, faHeart, faEye, faBackward, faHome, faTrash);
+library.add(fab, faShoppingCart, faHeart, faEye, faBackward, faHome, faTrash, faExclamationCircle);
 
 
 const App = () => {

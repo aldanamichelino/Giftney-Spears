@@ -7,11 +7,9 @@ import { Link } from 'react-router-dom';
 
 export const ItemDetail = ({ id, name, price, img, description, imgDescription, category, stock, error }) => {
 
-    const {goBack, push} = useHistory();
+    const {goBack} = useHistory();
 
     const { addItemToCart, isInCart } = useContext(CartContext);
-
-        //crear estado que controle si se agregó algo al carrito y me muestre el botón
 
     const handleAdd = (amount) => {
 
