@@ -57,6 +57,21 @@
         }
     }
 
+    &__logout{
+        position: absolute;
+        right: 3%;
+        top: 7%;
+        border: 2px solid $sweet-green;
+        background: darken($sweet-green, 25%);
+        color: $white;
+        padding: 5px;
+
+        &:hover{
+            border: 2px solid $pink;
+            color: $pink;
+        }
+    }
+
     svg{
         margin-bottom: 20px;
     }

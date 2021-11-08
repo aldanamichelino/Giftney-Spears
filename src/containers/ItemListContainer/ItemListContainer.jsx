@@ -38,7 +38,6 @@ export const ItemListContainer = () => {
                     });
                     setItems(items);
                 })
-
                 .catch((err) => console.log(err))
             .finally(() => {
                 setLoading(false);

@@ -6,19 +6,24 @@ import Swal from 'sweetalert2';
 import { Form } from '../../containers/Form/Form';
 import { Spinner } from '../Spinner/Spinner';
 import { UIContext } from '../../contexts/UIContext';
+import { UserAuthContext } from '../../contexts/UserAuthContext';
+import { Link } from 'react-router-dom';
 
 export const Checkout = () => {
 
+    const { currentUser, logout } = useContext(UserAuthContext);
     const { cart, totalItemsAmount, emptyCart, totalSpent } = useContext(CartContext);
-    const {loading, setLoading} = useContext(UIContext);
+    const { loading, setLoading } = useContext(UIContext);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errorField, setErrorField] = useState('');
+    const telRegex = /^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$/;
 
     const [values, setValues] = useState({
         name: '',
         lastName: '',
-        email: '',
-        reEmail: '',
+        email: currentUser.email,
+        reEmail: currentUser.email,
         tel: ''
-        //email podría sacarse de session?
     });
 
 
@@ -36,18 +41,6 @@ export const Checkout = () => {
             value: values.lastName,        
         },
         {
-            type: 'email',
-            placeholder: 'Correo electrónico',
-            name: 'email',
-            value: values.email,        
-        },
-        {
-            type: 'email',
-            placeholder: 'Reintroducí tu correo electrónico',
-            name: 'reEmail',
-            value: values.reEmail,        
-        },
-        {
             type: 'text',
             placeholder: 'Teléfono',
             name: 'tel',
@@ -57,33 +50,54 @@ export const Checkout = () => {
     
     const processOrder = (values) => {
         setLoading(true);
+
         generateOrder(values, cart, totalItemsAmount())
             .then((res) => {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Orden registrada',
-                    text: `Guardá tu número de compra ${res}`,
+                    title: 'Gracias por tu compra.',
+                    text: `Número de orden: ${res}`,
                     willClose: () => {
                         emptyCart();
                     }
                   })
             })
-            .catch((err) => {
-                console.log(err);
+            .catch(() => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Producto sin stock',
+                    title: 'Oops! Producto sin stock',
                   })
             })
             .finally(() => setLoading(false));
     }
 
+    const submitAction = (values) => {
+
+        if (values.name === '') {
+            setErrorField('name');
+            setErrorMessage('Ingresá un nombre');
+            return
+        }
+        if (values.lastName === '') {
+            setErrorField('lastName');
+            setErrorMessage('Ingresá un apellido');
+            return
+        }
+        if (!telRegex.test(values.tel)) {
+            setErrorField('tel');
+            setErrorMessage('Ingresá un teléfono válido');
+            return
+        }
+    
+        processOrder(values);
+    }
+
     return (
 
-       <div className="flex justify-center">
+       <div className="checkout flex justify-around items-center max-w-6xl rounded-br-lg shadow-xl mx-auto relative w-full p-8">
         {cart.length === 0 && <Redirect to="/"/>}
         
-            <div id="summary" className="w-1/4 items-center px-8 py-10">
+            <div id="summary" className="w-1/2 items-center px-8 py-10">
                 <h1 className="form__input__div font-semibold text-2xl pb-8">Detalle del pedido</h1>
                 <div className="flex justify-between py-6">
                     <span className="font-semibold text-sm uppercase">Cantidad total:</span>
@@ -97,7 +111,7 @@ export const Checkout = () => {
                     </div>
                     )
                 }
-                <div className="">
+                <div>
                     <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total</span>
                         <span>${ totalSpent() }</span>
@@ -105,7 +119,15 @@ export const Checkout = () => {
                 </div>
             </div>
 
-            <Form formTitle={'Completá tus datos'} values={values} inputsObject={inputsObject} processOrder={processOrder} loading={loading} setValues={setValues} buttonTitle={'Comprar'}/>
+            <div className="flex flex-col">
+                <div className="checkout__user__details">
+                    <p>Estás comprando como</p>
+                    <p className="checkout__user__details__email">{currentUser.email}</p>
+                    <small className="mt-4">¿No es tu cuenta? <Link className="underline" to="/" onClick={logout}>Hacé click acá.</Link></small>
+                </div>
+                
+                <Form formTitle={'Completá tus datos'} values={values} inputsObject={inputsObject} loading={loading} setValues={setValues} errorField={errorField} errorMessage={errorMessage} submitAction={submitAction} buttonTitle={'Comprar'}/>
+            </div>
 
             {loading && <Spinner/>}
 

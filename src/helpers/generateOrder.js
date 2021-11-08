@@ -12,8 +12,8 @@ export const generateOrder = (userData, cart, total) => {
             items: cart.map((item) => ({id: item.id, amount: item.amount, price: item.price})),
             total: total,
             date: firebase.firestore.Timestamp.fromDate(new Date())
-
         }
+
             const db = getFirestore();
             const orders = db.collection('orders');
             
@@ -39,7 +39,7 @@ export const generateOrder = (userData, cart, total) => {
                         .then((res) => {
                             batch.commit();
                             resolve(res.id);
-                        });
+                        })
                 } else {
                     reject(outOfStock);
                 }

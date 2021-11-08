@@ -41,7 +41,6 @@ export const CartProvider = ({ children }) => {
         
         if(itemIndexInCart !== -1){
             updatedCart[itemIndexInCart].amount = amount;
-            console.log('nueva cantidad de carro', updatedCart[itemIndexInCart].amount)
         }
 
         setCart(updatedCart);

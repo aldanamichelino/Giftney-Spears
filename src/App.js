@@ -13,18 +13,19 @@ import { Checkout } from './components/Checkout/Checkout';
 import { CartProvider } from './contexts/CartContext';
 import { UIProvider } from './contexts/UIContext';
 import { UserAuthContext } from './contexts/UserAuthContext';
-import { UserAuthenticate } from './components/UserAuthenticate/UserAuthenticate';
+import { UserAuthenticate } from './components/Auth/UserAuthenticate/UserAuthenticate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faHeart, faShoppingCart, faEye, faBackward, faHome, faTrash, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { SignUp } from './components/Auth/SignUp/SignUp';
 
 library.add(fab, faShoppingCart, faHeart, faEye, faBackward, faHome, faTrash, faExclamationCircle);
 
 
 const App = () => {
-  
-  const { isAuthenticated } = useContext(UserAuthContext);
-  
+
+  const {isAuthenticated} = useContext(UserAuthContext);
+
   return (
     <div className="App flex flex-col justify-between">
 
@@ -35,7 +36,6 @@ const App = () => {
             <NavBar/>
 
             <Switch>
-            <UserAuthenticate/>
               {isAuthenticated ?
                   <>
                     <Route exact path="/">
@@ -58,8 +58,18 @@ const App = () => {
                     </Route>
                   </>
                 :
-                <UserAuthenticate/>
-              } 
+                <>
+                  <Route exact path="/">
+                    <UserAuthenticate/>
+                  </Route>
+                  <Route exact path="/signup">
+                    <SignUp/>
+                  </Route>
+                  <Route path="*">
+                    <Redirect to="/"/>
+                  </Route>
+                </>
+              }
             </Switch>
 
             <Footer/>

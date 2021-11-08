@@ -1,3 +1,20 @@
-.form__input__div{
-    border-bottom: 2px solid $pink;
+.checkout{
+    background: lighten($baby-pink, 20%);
+    
+    &__user__details{
+        padding: 10px;
+        border: 2px solid darken($sweet-green, 25%);
+    
+        &__email{
+            color: $strong-gray;
+            font-weight: 600;
+        }
+
+    }
+    
+    form{
+        input{
+            background: lighten($baby-pink, 20%);
+        }
+    }
 }
