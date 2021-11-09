@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.d86e9b54.chunk.css",
-    "main.js": "/static/js/main.91398187.chunk.js",
-    "main.js.map": "/static/js/main.91398187.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7e3811fb.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7e3811fb.js.map",
-    "static/js/2.7ee33fb8.chunk.js": "/static/js/2.7ee33fb8.chunk.js",
-    "static/js/2.7ee33fb8.chunk.js.map": "/static/js/2.7ee33fb8.chunk.js.map",
-    "static/js/3.6e8b136b.chunk.js": "/static/js/3.6e8b136b.chunk.js",
-    "static/js/3.6e8b136b.chunk.js.map": "/static/js/3.6e8b136b.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.d86e9b54.chunk.css.map": "/static/css/main.d86e9b54.chunk.css.map",
-    "static/js/2.7ee33fb8.chunk.js.LICENSE.txt": "/static/js/2.7ee33fb8.chunk.js.LICENSE.txt",
-    "static/media/britney-login.8d34e241.jpg": "/static/media/britney-login.8d34e241.jpg",
-    "static/media/britney.63fd112a.svg": "/static/media/britney.63fd112a.svg",
-    "static/media/loading-flower.25f1aec1.png": "/static/media/loading-flower.25f1aec1.png",
-    "static/media/index.css": "/static/media/oops.96c687c3.ttf"
+    "main.css": "/Giftney-Spears/static/css/main.d3e9edac.chunk.css",
+    "main.js": "/Giftney-Spears/static/js/main.91398187.chunk.js",
+    "main.js.map": "/Giftney-Spears/static/js/main.91398187.chunk.js.map",
+    "runtime-main.js": "/Giftney-Spears/static/js/runtime-main.0f19f391.js",
+    "runtime-main.js.map": "/Giftney-Spears/static/js/runtime-main.0f19f391.js.map",
+    "static/js/2.f4a1da73.chunk.js": "/Giftney-Spears/static/js/2.f4a1da73.chunk.js",
+    "static/js/2.f4a1da73.chunk.js.map": "/Giftney-Spears/static/js/2.f4a1da73.chunk.js.map",
+    "static/js/3.6e8b136b.chunk.js": "/Giftney-Spears/static/js/3.6e8b136b.chunk.js",
+    "static/js/3.6e8b136b.chunk.js.map": "/Giftney-Spears/static/js/3.6e8b136b.chunk.js.map",
+    "index.html": "/Giftney-Spears/index.html",
+    "static/css/main.d3e9edac.chunk.css.map": "/Giftney-Spears/static/css/main.d3e9edac.chunk.css.map",
+    "static/js/2.f4a1da73.chunk.js.LICENSE.txt": "/Giftney-Spears/static/js/2.f4a1da73.chunk.js.LICENSE.txt",
+    "static/media/britney-login.8d34e241.jpg": "/Giftney-Spears/static/media/britney-login.8d34e241.jpg",
+    "static/media/britney.63fd112a.svg": "/Giftney-Spears/static/media/britney.63fd112a.svg",
+    "static/media/loading-flower.25f1aec1.png": "/Giftney-Spears/static/media/loading-flower.25f1aec1.png",
+    "static/media/index.css": "/Giftney-Spears/static/media/oops.96c687c3.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.7e3811fb.js",
-    "static/js/2.7ee33fb8.chunk.js",
-    "static/css/main.d86e9b54.chunk.css",
+    "static/js/runtime-main.0f19f391.js",
+    "static/js/2.f4a1da73.chunk.js",
+    "static/css/main.d3e9edac.chunk.css",
     "static/js/main.91398187.chunk.js"
   ]
 }
