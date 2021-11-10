@@ -22,8 +22,7 @@ export const Item = ({ id, name, price, img, description, imgDescription, catego
             </div>
             
             <div className="absolute bottom-5 left-6">
-                <span className="list__item__info__pill">{ category }</span>
-                { freeBritney === 1 ? <Link to="/productos/freebritney" className="list__item__info__freeBritney">FreeBritney</Link> : '' }
+                { freeBritney === 1 ? <Link to="/productos/freebritney" className="list__item__info__freeBritney"><span className="list__item__info__pill">Free Britney</span></Link> : '' }
             </div>
             
         </Link>

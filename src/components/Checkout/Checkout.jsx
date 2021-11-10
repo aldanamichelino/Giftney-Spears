@@ -103,14 +103,16 @@ export const Checkout = () => {
                     <span className="font-semibold text-sm uppercase">Cantidad total:</span>
                     <span>{totalItemsAmount()} producto(s)</span>
                 </div>
-                { 
-                    cart.map( (item) => 
-                     <div className="flex flex-col px-4 py-4">
-                        <h3 className="flex justify-between text-xs"><span>Item:</span> <span>{item.name}</span></h3>
-                        <h3 className="flex justify-between text-xs"><span>Cantidad:</span> <span>{item.amount}</span></h3>
-                    </div>
-                    )
-                }
+                <div className="item__summary">
+                    { 
+                        cart.map( (item) => 
+                        <div key={item.id} className="flex flex-col px-4 py-4">
+                            <h3 className="flex justify-between text-xs"><span>Item:</span> <span>{item.name}</span></h3>
+                            <h3 className="flex justify-between text-xs"><span>Cantidad:</span> <span>{item.amount}</span></h3>
+                        </div>
+                        )
+                    }
+                </div>
                 <div>
                     <div className="flex font-semibold justify-between py-6 text-sm uppercase">
                         <span>Total</span>

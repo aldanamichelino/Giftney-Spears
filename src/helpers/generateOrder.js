@@ -23,7 +23,7 @@ export const generateOrder = (userData, cart, total) => {
             const batch = db.batch();
             
             const outOfStock = [];
-            
+
             query.docs.forEach((doc) => {
                 const itemInCart = cart.find(item => item.id === doc.id);
             

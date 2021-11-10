@@ -22,8 +22,8 @@ export const Form = ({formTitle, values, inputsObject, loading, setValues, error
             <h2 className="font-semibold text-2xl pb-8">{formTitle}</h2>
 
             {inputsObject && 
-                inputsObject.map((input) => (
-                    <>
+                inputsObject.map((input, index) => (
+                    <div key={index}>
                         <div className="form__input__div flex flex-col items-center py-2">
                             <input
                                 className="appearance-none bg-transparent border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
@@ -35,7 +35,7 @@ export const Form = ({formTitle, values, inputsObject, loading, setValues, error
                             />
                         </div>
                         <small className={`error flex justify-end ${errorField === input.name ? 'block' : 'hidden'}`}><WarningWidget/>{errorMessage}</small>
-                    </>
+                    </div>
                     )
                 ) 
             }
