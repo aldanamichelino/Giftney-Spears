@@ -22,17 +22,17 @@ Para crear el build de producción, corré *npm run build*
 
 ### Librerías y paquetes incorporados
 
-- Craco (Create React App Configuration Override), una capa de configuración para la herramienta CRA. Con un solo archivo, se pueden configurar archivos de css, webpack, etc.
+- **Craco** (Create React App Configuration Override), una capa de configuración para la herramienta CRA. Con un solo archivo, se pueden configurar archivos de css, webpack, etc.
 
-- Sass para estilos. Sus variables, mixines y funciones facilitan mucho la designación de estilos en los componentes. Además, ofrece una estructura de estilos por componentes muy práctica, que luego se compila y minimiza mediante webpack para facilitar su versionado y la creación del build final de producción.
+- **Sass**, lenguaje de extensión de css. Sus variables, mixines y funciones facilitan mucho la designación de estilos en los componentes. Además, ofrece una estructura de estilos por archivos muy práctica, que luego se compila y minimiza mediante Webpack para facilitar su versionado y la creación del build de producción.
 
-- Tailwind para manejo de estilos por clases y creación de componentes html. Gracias a su enorme colección de clases y compontentes disponibles en la web, montar las distintas partes de las vistas se facilita muchísimo y se evita tener archivos sass largos y difíciles de comprender.
+- **Tailwind**, un framework css para manejo de estilos por clases y creación de componentes html. Gracias a su enorme colección de clases y compontentes disponibles en la web, montar las distintas partes de las vistas se facilita muchísimo y se evita tener archivos sass largos y difíciles de comprender.
 
-- Firebase, servicio de base de datos no relacional y webserver, que en un simple archivo de configuración, permite setear su conexión, crear colecciones y administrar datos.
+- **Firebase**, servicio de base de datos no relacional y webserver de Google, que en un simple archivo de configuración, permite setear su conexión, crear colecciones y administrar datos.
 
-- SweetAlert, un paquete que permite reemplazar las alertas nativas de Javascript por popups dinámicos, bonitos y user-friendly.
+- **SweetAlert**, un paquete que permite reemplazar las alertas nativas de Javascript por popups dinámicos, bonitos y user-friendly.
 
-- Fontawesome para íconos.
+- **Fontawesome** para íconos.
 
-- Gh-pages, como no es posible deployar un proyecto CRA en GitHub pages, como sucede con otros frameworks o librerías, este es un paquete que permite publicar archivos bundle de React en una rama específica de github, que luego facilita su deploye en GitHub Pages.
+- **Gh-pages**, como no es posible deployar un proyecto SPA en GitHub pages, este es un paquete que permite publicar archivos bundle de React en una rama específica de github, que luego facilita su deploy en GitHub Pages. Para más info, https://create-react-app.dev/docs/deployment/
 
