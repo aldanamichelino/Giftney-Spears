@@ -4,11 +4,11 @@ import { WarningWidget } from '../../components/Widgets/WarningWidget/WarningWid
 export const Form = ({formTitle, values, inputsObject, loading, setValues, errorField, errorMessage, submitAction, buttonTitle}) => {
 
     const handleInputChange = (e) => {
-        e.preventDefault();
         setValues({
             ...values,
             [e.target.name]: e.target.value
         })
+
     }
 
     const handleSubmit = (e) => {

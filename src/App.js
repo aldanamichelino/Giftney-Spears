@@ -1,4 +1,3 @@
-//correr npm run build, designorar la carpeta build y subir todo a github
 import './sass/App.scss';
 import './index.css';
 
@@ -77,6 +76,7 @@ const App = () => {
           
         </CartProvider>
       </UIProvider>
+      
     </div>
   );
 }

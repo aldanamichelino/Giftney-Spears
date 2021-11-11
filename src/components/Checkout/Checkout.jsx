@@ -47,11 +47,29 @@ export const Checkout = () => {
             value: values.tel,        
         },
     ];
+
+
+    const submitAction = (values) => {
+        
+        if (values.name === '') {
+            setErrorField('name');
+            setErrorMessage('Ingresá un nombre');
+            return
+        }
+        if (values.lastName === '') {
+            setErrorField('lastName');
+            setErrorMessage('Ingresá un apellido');
+            return
+        }
+        if (!telRegex.test(values.tel)) {
+            setErrorField('tel');
+            setErrorMessage('Ingresá un teléfono válido');
+            return
+        }
     
-    const processOrder = (values) => {
         setLoading(true);
 
-        generateOrder(values, cart, totalItemsAmount())
+        generateOrder(values, cart, totalSpent())
             .then((res) => {
                 Swal.fire({
                     icon: 'success',
@@ -69,27 +87,6 @@ export const Checkout = () => {
                   })
             })
             .finally(() => setLoading(false));
-    }
-
-    const submitAction = (values) => {
-
-        if (values.name === '') {
-            setErrorField('name');
-            setErrorMessage('Ingresá un nombre');
-            return
-        }
-        if (values.lastName === '') {
-            setErrorField('lastName');
-            setErrorMessage('Ingresá un apellido');
-            return
-        }
-        if (!telRegex.test(values.tel)) {
-            setErrorField('tel');
-            setErrorMessage('Ingresá un teléfono válido');
-            return
-        }
-    
-        processOrder(values);
     }
 
     return (

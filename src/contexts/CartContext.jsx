@@ -20,7 +20,8 @@ export const CartProvider = ({ children }) => {
         }
 
         setCart(updatedCart);
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+
     }
 
     

@@ -9,7 +9,7 @@ export const generateOrder = (userData, cart, total) => {
             buyer: {
                 ...userData
             },
-            items: cart.map((item) => ({id: item.id, amount: item.amount, price: item.price})),
+            items: cart.map((item) => ({id: item.id, amount: item.amount, price: item.price, description: item.description})),
             total: total,
             date: firebase.firestore.Timestamp.fromDate(new Date())
         }
@@ -21,6 +21,8 @@ export const generateOrder = (userData, cart, total) => {
             
             const query = await itemsToUpdate.get();
             const batch = db.batch();
+
+            
             
             const outOfStock = [];
 
@@ -32,18 +34,18 @@ export const generateOrder = (userData, cart, total) => {
                 } else {
                     outOfStock.push({...doc.data(), id: doc.id});
                 }
+            })    
             
-                if(outOfStock.length === 0){
-        
-                    orders.add(order)
-                        .then((res) => {
-                            batch.commit();
-                            resolve(res.id);
-                        })
-                } else {
-                    reject(outOfStock);
-                }
-            })
+            if(outOfStock.length === 0){
+                orders.add(order)
+                    .then((res) => {
+                        batch.commit();
+                        resolve(res.id);
+                    })
+
+            } else {
+                reject(outOfStock);
+            }
 
     })
 
