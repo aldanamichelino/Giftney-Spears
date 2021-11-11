@@ -6,7 +6,7 @@
 
 Es un proyecto de ecommerce que ofrece merchandising de todo de tipo de Britney Spears. Es una tienda pensada para adolescentes mayores de 25 años. ¿Por qué? Porque somos muchísimxs lxs millennials que amamos a Britney y seguimos su carrera durante toda nuestra infancia y adolescencia. Esta tienda es para todxs ellxs.
 
-Esta web app fue desarrollada en React.js como proyecto final del curso de React.js de CoderHouse. Como backend, consume una base de datos de Firebase.
+Esta web app fue desarrollada en React.js como proyecto final del curso de React.js de CoderHouse. Como backend, consume una base de datos y el servicio de autenticación de Firebase.
 
 
 ### Instrucciones de instalación
