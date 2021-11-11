@@ -17,6 +17,8 @@ Para levantar el servidor de react, corré *npm start*
 
 Para compilar los archivos de Sass, corré *npm run sass*
 
+Para crear el build de producción, corré *npm run build*
+
 
 ### Librerías y paquetes incorporados
 
